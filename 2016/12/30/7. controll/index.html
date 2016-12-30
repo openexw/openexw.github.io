@@ -1,0 +1,935 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="条件语句条件语句提供一种语法构造，只有满足某个条件，才会执行相应的语句。JavaScript提供if结构和switch结构，完成条件判断。
+if 结构if结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句。
+123456if (expression)  statement;// 或者if (expression) statement;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流程控制语句（七）">
+<meta property="og:url" content="openexw.github.io/2016/12/30/7. controll/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="条件语句条件语句提供一种语法构造，只有满足某个条件，才会执行相应的语句。JavaScript提供if结构和switch结构，完成条件判断。
+if 结构if结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句。
+123456if (expression)  statement;// 或者if (expression) statement;">
+<meta property="og:updated_time" content="2016-12-30T01:20:28.638Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="流程控制语句（七）">
+<meta name="twitter:description" content="条件语句条件语句提供一种语法构造，只有满足某个条件，才会执行相应的语句。JavaScript提供if结构和switch结构，完成条件判断。
+if 结构if结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句。
+123456if (expression)  statement;// 或者if (expression) statement;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="openexw.github.io/2016/12/30/7. controll/"/>
+
+
+
+
+
+  <title> 流程控制语句（七） | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/12/30/7. controll/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                流程控制语句（七）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-30T09:19:53+08:00">
+                2016-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/30/7. controll/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/7. controll/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/30/7. controll/" class="leancloud_visitors" data-flag-title="流程控制语句（七）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><p>条件语句提供一种语法构造，只有满足某个条件，才会执行相应的语句。JavaScript提供<code>if</code>结构和<code>switch</code>结构，完成条件判断。</p>
+<h3 id="if-结构"><a href="#if-结构" class="headerlink" title="if 结构"></a>if 结构</h3><p><code>if</code>结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (expression)</div><div class="line">  statement;</div><div class="line"></div><div class="line"><span class="comment">// 或者</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (expression) statement;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>上面是<code>if</code>结构的基本形式。需要注意的是，expression（表达式）必须放在圆括号中，表示对表达式求值。如果结果为<code>true</code>，就执行紧跟在后面的语句（statement）；如果结果为<code>false</code>，则跳过statement的部分。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (m === <span class="number">3</span>)</div><div class="line">  m += <span class="number">1</span>;</div></pre></td></tr></table></figure>
+<p>上面代码表示，只有在<code>m</code>等于3时，才会将其值加上1。</p>
+<p>这种写法要求条件表达式后面只能有一个语句。如果想执行多个语句，必须在<code>if</code>的条件判断之后，加上大括号，表示代码块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (m === <span class="number">3</span>) &#123;</div><div class="line">  m += <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>建议总是在<code>if</code>语句中使用大括号，因为这样方便插入语句。</p>
+<p>注意，<code>if</code>后面的表达式，不要混淆“赋值表达式”（<code>=</code>）与“严格相等运算符”（<code>===</code>）或“相等运算符”（<code>==</code>）。因为，“赋值表达式”不具有比较作用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> y = <span class="number">2</span>;</div><div class="line"><span class="keyword">if</span> (x = y) &#123;</div><div class="line">  <span class="built_in">console</span>.log(x);</div><div class="line">&#125;</div><div class="line"><span class="comment">// "2"</span></div></pre></td></tr></table></figure>
+<p>上面代码的原意是，当<code>x</code>等于<code>y</code>的时候，才执行相关语句。但是，不小心将“严格相等运算符”写成“赋值表达式”，结果变成了将<code>y</code>赋值给<code>x</code>，然后条件就变成了，变量<code>x</code>的值（等于2）自动转为布尔值以后，判断其是否为<code>true</code>。</p>
+<p>这种错误可以正常生成一个布尔值，因而不会报错。为了避免这种情况，有些开发者习惯将常量写在运算符的左边，这样的话，一旦不小心将相等运算符写成赋值运算符，就会报错，因为常量不能被赋值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (x = <span class="number">2</span>) &#123; <span class="comment">// 不报错</span></div><div class="line"><span class="keyword">if</span> (<span class="number">2</span> = x) &#123; <span class="comment">// 报错</span></div></pre></td></tr></table></figure>
+<p>至于为什么优先采用“严格相等运算符”（<code>===</code>），而不是“相等运算符”（<code>==</code>），请参考《运算符》一节。</p>
+<h3 id="if…else结构"><a href="#if…else结构" class="headerlink" title="if…else结构"></a>if…else结构</h3><p><code>if</code>代码块后面，还可以跟一个<code>else</code>代码块，表示不满足条件时，所要执行的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (m === <span class="number">3</span>) &#123;</div><div class="line">  <span class="comment">// then</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  <span class="comment">// else</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码判断变量<code>m</code>是否等于3，如果等于就执行<code>if</code>代码块，否则执行<code>else</code>代码块。</p>
+<p>对同一个变量进行多次判断时，多个<code>if...else</code>语句可以连写在一起。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (m === <span class="number">0</span>) &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (m === <span class="number">1</span>) &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (m === <span class="number">2</span>) &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>else</code>代码块总是跟随离自己最近的那个<code>if</code>语句。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> m = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> n = <span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (m !== <span class="number">1</span>)</div><div class="line"><span class="keyword">if</span> (n === <span class="number">2</span>) <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</div><div class="line"><span class="keyword">else</span> <span class="built_in">console</span>.log(<span class="string">'world'</span>);</div></pre></td></tr></table></figure>
+<p>上面代码不会有任何输出，<code>else</code>代码块不会得到执行，因为它跟着的是最近的那个<code>if</code>语句，相当于下面这样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (m !== <span class="number">1</span>) &#123;</div><div class="line">  <span class="keyword">if</span> (n === <span class="number">2</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'hello'</span>);	</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'world'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果想让<code>else</code>代码块跟随最上面的那个<code>if</code>语句，就要改变大括号的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (m !== <span class="number">1</span>) &#123;</div><div class="line">  <span class="keyword">if</span> (n === <span class="number">2</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'hello'</span>);	</div><div class="line">  &#125;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'world'</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// world</span></div></pre></td></tr></table></figure>
+<h3 id="switch结构"><a href="#switch结构" class="headerlink" title="switch结构"></a>switch结构</h3><p>多个<code>if...else</code>连在一起使用的时候，可以转为使用更方便的<code>switch</code>结构。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span> (fruit) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="string">"banana"</span>:</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    <span class="keyword">break</span>;</div><div class="line">  <span class="keyword">case</span> <span class="string">"apple"</span>:</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    <span class="keyword">break</span>;</div><div class="line">  <span class="keyword">default</span>:</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码根据变量<code>fruit</code>的值，选择执行相应的<code>case</code>。如果所有<code>case</code>都不符合，则执行最后的<code>default</code>部分。需要注意的是，每个<code>case</code>代码块内部的<code>break</code>语句不能少，否则会接下去执行下一个<code>case</code>代码块，而不是跳出<code>switch</code>结构。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="keyword">switch</span> (x) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'x 于1'</span>);</div><div class="line">  <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'x 等于2'</span>);</div><div class="line">  <span class="keyword">default</span>:</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'x 等于其他值'</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// x等于1</span></div><div class="line"><span class="comment">// x等于2</span></div><div class="line"><span class="comment">// x等于其他值</span></div></pre></td></tr></table></figure>
+<p>上面代码中，<code>case</code>代码块之中没有<code>break</code>语句，导致不会跳出<code>switch</code>结构，而会一直执行下去。</p>
+<p><code>switch</code>语句部分和<code>case</code>语句部分，都可以使用表达式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(<span class="number">1</span> + <span class="number">3</span>) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="number">2</span> + <span class="number">2</span>:</div><div class="line">    f();</div><div class="line">    <span class="keyword">break</span>;</div><div class="line">  <span class="keyword">default</span>:</div><div class="line">    neverhappens();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码的<code>default</code>部分，是永远不会执行到的。</p>
+<p>需要注意的是，<code>switch</code>语句后面的表达式与<code>case</code>语句后面的表示式，在比较运行结果时，采用的是严格相等运算符（<code>===</code>），而不是相等运算符（<code>==</code>），这意味着比较时不会发生类型转换。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="keyword">switch</span> (x) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="literal">true</span>:</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'x发生类型转换'</span>);</div><div class="line">  <span class="keyword">default</span>:</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'x没有发生类型转换'</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// x没有发生类型转换</span></div></pre></td></tr></table></figure>
+<p>上面代码中，由于变量<code>x</code>没有发生类型转换，所以不会执行<code>case true</code>的情况。这表明，<code>switch</code>语句内部采用的是“严格相等运算符”，详细解释请参考《运算符》一节。</p>
+<h3 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符 ?:"></a>三元运算符 ?:</h3><p>JavaScript还有一个三元运算符（即该运算符需要三个运算子）<code>?:</code>，也可以用于逻辑判断。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(condition) ? expr1 : expr2</div></pre></td></tr></table></figure>
+<p>上面代码中，如果<code>condition</code>为<code>true</code>，则返回<code>expr1</code>的值，否则返回<code>expr2</code>的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> even = (n % <span class="number">2</span> === <span class="number">0</span>) ? <span class="literal">true</span> : <span class="literal">false</span>;</div></pre></td></tr></table></figure>
+<p>上面代码中，如果<code>n</code>可以被2整除，则<code>even</code>等于<code>true</code>，否则等于<code>false</code>。它等同于下面的形式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> even;</div><div class="line"><span class="keyword">if</span> (n % <span class="number">2</span> === <span class="number">0</span>) &#123;</div><div class="line">  even = <span class="literal">true</span>;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  even = <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个三元运算符可以被视为<code>if...else...</code>的简写形式，因此可以用于多种场合。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myVar;</div><div class="line"><span class="built_in">console</span>.log( myVar</div><div class="line">  ? <span class="string">'myVar has a value'</span></div><div class="line">  : <span class="string">'myVar do not has a value'</span></div><div class="line">)</div><div class="line"><span class="comment">// myVar do not has a value</span></div></pre></td></tr></table></figure>
+<p>上面代码利用三元运算符，输出相应的提示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> msg = <span class="string">'The number '</span></div><div class="line">  + n</div><div class="line">  + <span class="string">' is '</span></div><div class="line">  + ((n % <span class="number">2</span> === <span class="number">0</span>) ? <span class="string">'even'</span> : <span class="string">'odd'</span>);</div></pre></td></tr></table></figure>
+<p>上面代码利用三元运算符，在字符串之中插入不同的值。</p>
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><p>循环语句用于重复执行某个操作，它有多种形式。</p>
+<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><p><code>While</code>语句包括一个循环条件和一段代码块，只要条件为真，就不断循环执行代码块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (expression)</div><div class="line">  statement;</div><div class="line"></div><div class="line"><span class="comment">// 或者</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> (expression) statement;</div></pre></td></tr></table></figure>
+<p><code>while</code>语句的循环条件是一个表达式（express），必须放在圆括号中。代码块部分，如果只有一条语句（statement），可以省略大括号，否则就必须加上大括号。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (expression) &#123;</div><div class="line">  statement;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面是<code>while</code>语句的一个例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">while</span> (i &lt; <span class="number">100</span>) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'i当前为：'</span> + i);</div><div class="line">  i += <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码将循环100次，直到<code>i</code>等于100为止。</p>
+<p>下面的例子是一个无限循环，因为条件总是为真。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Hello, world'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p><code>for</code>语句是循环命令的另一种形式，可以指定循环的起点、终点和终止条件。它的格式如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (initialize; test; increment)</div><div class="line">  statement</div><div class="line"></div><div class="line"><span class="comment">// 或者</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (initialize; test; increment) &#123;</div><div class="line">  statement</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>for</code>语句后面的括号里面，有三个表达式。</p>
+<ul>
+<li>初始化表达式（initialize）：确定循环的初始值，只在循环开始时执行一次。</li>
+<li>测试表达式（test）：检查循环条件，只要为真就进行后续操作。</li>
+<li>递增表达式（increment）：完成后续操作，然后返回上一步，再一次检查循环条件。</li>
+</ul>
+<p>下面是一个例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">3</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; x; i++) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0</span></div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="comment">// 2</span></div></pre></td></tr></table></figure>
+<p>上面代码中，初始化表达式是<code>var i = 0</code>，即初始化一个变量<code>i</code>；测试表达式是<code>i &lt; x</code>，即只要<code>i</code>小于<code>x</code>，就会执行循环；递增表达式是<code>i++</code>，即每次循环结束后，<code>i</code>增大1。</p>
+<p>所有<code>for</code>循环，都可以改写成<code>while</code>循环。上面的例子改为<code>while</code>循环，代码如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">3</span>;</div><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">while</span> (i &lt; x) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">  i++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>for</code>语句的三个部分（initialize，test，increment），可以省略任何一个，也可以全部省略。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> ( ; ; )&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Hello World'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码省略了<code>for</code>语句表达式的三个部分，结果就导致了一个无限循环。</p>
+<h3 id="do…while循环"><a href="#do…while循环" class="headerlink" title="do…while循环"></a>do…while循环</h3><p><code>do...while</code>循环与<code>while</code>循环类似，唯一的区别就是先运行一次循环体，然后判断循环条件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span></div><div class="line">  statement</div><div class="line"><span class="keyword">while</span> (expression);</div><div class="line"></div><div class="line"><span class="comment">// 或者</span></div><div class="line"></div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">  statement</div><div class="line">&#125; <span class="keyword">while</span> (expression);</div></pre></td></tr></table></figure>
+<p>不管条件是否为真，<code>do..while</code>循环至少运行一次，这是这种结构最大的特点。另外，<code>while</code>语句后面的分号不能省略。</p>
+<p>下面是一个例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">3</span>;</div><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">  i++;</div><div class="line">&#125; <span class="keyword">while</span>(i &lt; x);</div></pre></td></tr></table></figure>
+<h3 id="break语句和continue语句"><a href="#break语句和continue语句" class="headerlink" title="break语句和continue语句"></a>break语句和continue语句</h3><p><code>break</code>语句和<code>continue</code>语句都具有跳转作用，可以让代码不按既有的顺序执行。</p>
+<p><code>break</code>语句用于跳出代码块或循环。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">while</span>(i &lt; <span class="number">100</span>) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'i当前为：'</span> + i);</div><div class="line">  i++;</div><div class="line">  <span class="keyword">if</span> (i === <span class="number">10</span>) <span class="keyword">break</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码只会执行10次循环，一旦<code>i</code>等于10，就会跳出循环。</p>
+<p><code>for</code>循环也可以使用<code>break</code>语句跳出循环。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">  <span class="keyword">if</span> (i === <span class="number">3</span>)</div><div class="line">    <span class="keyword">break</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0</span></div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// 3</span></div></pre></td></tr></table></figure>
+<p>上面代码执行到<code>i</code>等于3，就会跳出循环。</p>
+<p><code>continue</code>语句用于立即终止本轮循环，返回循环结构的头部，开始下一轮循环。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">while</span> (i &lt; <span class="number">100</span>)&#123;</div><div class="line">  i++;</div><div class="line">  <span class="keyword">if</span> (i%<span class="number">2</span> === <span class="number">0</span>) <span class="keyword">continue</span>;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'i当前为：'</span> + i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码只有在<code>i</code>为奇数时，才会输出<code>i</code>的值。如果<code>i</code>为偶数，则直接进入下一轮循环。</p>
+<p>如果存在多重循环，不带参数的<code>break</code>语句和<code>continue</code>语句都只针对最内层循环。</p>
+<h3 id="标签（label）"><a href="#标签（label）" class="headerlink" title="标签（label）"></a>标签（label）</h3><p>JavaScript语言允许，语句的前面有标签（label），相当于定位符，用于跳转到程序的任意位置，标签的格式如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">label:</div><div class="line">  statement</div></pre></td></tr></table></figure>
+<p>标签可以是任意的标识符，但是不能是保留字，语句部分可以是任意语句。</p>
+<p>标签通常与<code>break</code>语句和<code>continue</code>语句配合使用，跳出特定的循环。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">top:</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++)&#123;</div><div class="line">      <span class="keyword">if</span> (i === <span class="number">1</span> &amp;&amp; j === <span class="number">1</span>) <span class="keyword">break</span> top;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'i='</span> + i + <span class="string">', j='</span> + j);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"><span class="comment">// i=0, j=0</span></div><div class="line"><span class="comment">// i=0, j=1</span></div><div class="line"><span class="comment">// i=0, j=2</span></div><div class="line"><span class="comment">// i=1, j=0</span></div></pre></td></tr></table></figure>
+<p>上面代码为一个双重循环区块，<code>break</code>命令后面加上了<code>top</code>标签（注意，<code>top</code>不用加引号），满足条件时，直接跳出双层循环。如果<code>break</code>语句后面不使用标签，则只能跳出内层循环，进入下一次的外层循环。</p>
+<p><code>continue</code>语句也可以与标签配合使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">top:</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++)&#123;</div><div class="line">      <span class="keyword">if</span> (i === <span class="number">1</span> &amp;&amp; j === <span class="number">1</span>) <span class="keyword">continue</span> top;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'i='</span> + i + <span class="string">', j='</span> + j);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"><span class="comment">// i=0, j=0</span></div><div class="line"><span class="comment">// i=0, j=1</span></div><div class="line"><span class="comment">// i=0, j=2</span></div><div class="line"><span class="comment">// i=1, j=0</span></div><div class="line"><span class="comment">// i=2, j=0</span></div><div class="line"><span class="comment">// i=2, j=1</span></div><div class="line"><span class="comment">// i=2, j=2</span></div></pre></td></tr></table></figure>
+<p>上面代码中，<code>continue</code>命令后面有一个标签名，满足条件时，会跳过当前循环，直接进入下一轮外层循环。如果<code>continue</code>语句后面不使用标签，则只能进入下一轮的内层循环。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li>Axel Rauschmayer, <a href="http://www.2ality.com/2011/10/javascript-overview.html" target="_blank" rel="external">A quick overview of JavaScript</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/30/6. operator/" rel="next" title="运算符（六）">
+                <i class="fa fa-chevron-left"></i> 运算符（六）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/30/7. controll/"
+           data-title="流程控制语句（七）" data-url="openexw.github.io/2016/12/30/7. controll/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Openoter" />
+          <p class="site-author-name" itemprop="name">Openoter</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条件语句"><span class="nav-number">1.</span> <span class="nav-text">条件语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-结构"><span class="nav-number">1.1.</span> <span class="nav-text">if 结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if…else结构"><span class="nav-number">1.2.</span> <span class="nav-text">if…else结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch结构"><span class="nav-number">1.3.</span> <span class="nav-text">switch结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三元运算符"><span class="nav-number">1.4.</span> <span class="nav-text">三元运算符 ?:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环语句"><span class="nav-number">2.</span> <span class="nav-text">循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#while循环"><span class="nav-number">2.1.</span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for循环"><span class="nav-number">2.2.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#do…while循环"><span class="nav-number">2.3.</span> <span class="nav-text">do…while循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#break语句和continue语句"><span class="nav-number">2.4.</span> <span class="nav-text">break语句和continue语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签（label）"><span class="nav-number">2.5.</span> <span class="nav-text">标签（label）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">3.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Openoter</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"openoter"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("4yBJ2Rhasby0Upv2IyRBIVoL-gzGzoHsz", "1PbbYpUV9yyYNVg3dxqKeACK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
