@@ -85,18 +85,18 @@
 
 
 <meta name="description" content="字典（dict）dict全称dictionary，其他语言中也称为map，使用键-值（key-value）存储。它使用的是哈希算法（hash）
-123456789101112# 定义一个字典dict = &amp;#123;&quot;name&quot;:&quot;Kang&quot;, &quot;age&quot;: 12&amp;#125;dict1 = dict(name=&quot;Jack&quot;, age=34) # 注意key值没有引号# 访问字典中的值print(d">
+12345678910# 定义一个字典dict = &amp;#123;&quot;name&quot;:&quot;Kang&quot;, &quot;age&quot;: 12&amp;#125;dict1 = dict(name=&quot;Jack&quot;, age=34) # 注意key值没有引号# 访问字典中的值print(dict[">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字典与集合">
 <meta property="og:url" content="openexw.github.io/2017/01/01/字典和集合/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="字典（dict）dict全称dictionary，其他语言中也称为map，使用键-值（key-value）存储。它使用的是哈希算法（hash）
-123456789101112# 定义一个字典dict = &amp;#123;&quot;name&quot;:&quot;Kang&quot;, &quot;age&quot;: 12&amp;#125;dict1 = dict(name=&quot;Jack&quot;, age=34) # 注意key值没有引号# 访问字典中的值print(d">
-<meta property="og:updated_time" content="2016-12-31T16:55:03.240Z">
+12345678910# 定义一个字典dict = &amp;#123;&quot;name&quot;:&quot;Kang&quot;, &quot;age&quot;: 12&amp;#125;dict1 = dict(name=&quot;Jack&quot;, age=34) # 注意key值没有引号# 访问字典中的值print(dict[">
+<meta property="og:updated_time" content="2016-12-31T16:59:48.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字典与集合">
 <meta name="twitter:description" content="字典（dict）dict全称dictionary，其他语言中也称为map，使用键-值（key-value）存储。它使用的是哈希算法（hash）
-123456789101112# 定义一个字典dict = &amp;#123;&quot;name&quot;:&quot;Kang&quot;, &quot;age&quot;: 12&amp;#125;dict1 = dict(name=&quot;Jack&quot;, age=34) # 注意key值没有引号# 访问字典中的值print(d">
+12345678910# 定义一个字典dict = &amp;#123;&quot;name&quot;:&quot;Kang&quot;, &quot;age&quot;: 12&amp;#125;dict1 = dict(name=&quot;Jack&quot;, age=34) # 注意key值没有引号# 访问字典中的值print(dict[">
 
 
 
@@ -382,7 +382,8 @@
 
       
         <h1 id="字典（dict）"><a href="#字典（dict）" class="headerlink" title="字典（dict）"></a>字典（dict）</h1><p>dict全称<code>dictionary</code>，其他语言中也称为map，使用键-值（key-value）存储。它使用的是哈希算法（hash）</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># 定义一个字典</div><div class="line">dict = &#123;"name":"Kang", "age": 12&#125;</div><div class="line">dict1 = dict(name="Jack", age=34) # 注意key值没有引号</div><div class="line"></div><div class="line"># 访问字典中的值</div><div class="line">print(dict["name"]) # 如果key不存在，dict会报错，为了避免报错通过in关键字来判断</div><div class="line"></div><div class="line"></div><div class="line"># 插入数据</div><div class="line">dict["ni"] = "wei"</div><div class="line"></div><div class="line">&lt;!-- more --&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 定义一个字典</span></div><div class="line">dict = &#123;<span class="string">"name"</span>:<span class="string">"Kang"</span>, <span class="string">"age"</span>: <span class="number">12</span>&#125;</div><div class="line">dict1 = dict(name=<span class="string">"Jack"</span>, age=<span class="number">34</span>) <span class="comment"># 注意key值没有引号</span></div><div class="line"></div><div class="line"><span class="comment"># 访问字典中的值</span></div><div class="line">print(dict[<span class="string">"name"</span>]) <span class="comment"># 如果key不存在，dict会报错，为了避免报错通过in关键字来判断</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 插入数据</span></div><div class="line">dict[<span class="string">"ni"</span>] = <span class="string">"wei"</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p>除了初始化时的数据，dict也可以通过key放入。</p>
 <h2 id="访问数据"><a href="#访问数据" class="headerlink" title="访问数据"></a>访问数据</h2><p>避免key不存在的错误，有两种办法解决：（判断的是key）</p>
 <ul>

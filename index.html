@@ -380,44 +380,15 @@
 
       
         
-          
-            <h1 id="字典（dict）"><a href="#字典（dict）" class="headerlink" title="字典（dict）"></a>字典（dict）</h1><p>dict全称<code>dictionary</code>，其他语言中也称为map，使用键-值（key-value）存储。它使用的是哈希算法（hash）</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># 定义一个字典</div><div class="line">dict = &#123;"name":"Kang", "age": 12&#125;</div><div class="line">dict1 = dict(name="Jack", age=34) # 注意key值没有引号</div><div class="line"></div><div class="line"># 访问字典中的值</div><div class="line">print(dict["name"]) # 如果key不存在，dict会报错，为了避免报错通过in关键字来判断</div><div class="line"></div><div class="line"></div><div class="line"># 插入数据</div><div class="line">dict["ni"] = "wei"</div><div class="line"></div><div class="line">&lt;!-- more --&gt;</div></pre></td></tr></table></figure>
-<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p>除了初始化时的数据，dict也可以通过key放入。</p>
-<h2 id="访问数据"><a href="#访问数据" class="headerlink" title="访问数据"></a>访问数据</h2><p>避免key不存在的错误，有两种办法解决：（判断的是key）</p>
-<ul>
-<li>通过<code>in</code>判断key是否存在，返回不二值</li>
-<li>通过dict提供的<code>get()</code>方法，如果key不存在，返回<code>None</code>，或者或者自己给指定值。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="string">'Jack'</span> <span class="keyword">in</span> dict <span class="comment"># Flase</span></div><div class="line"></div><div class="line">d.get(<span class="string">"Jack"</span>) <span class="comment"># 返回None时，交互命令行不显示结果</span></div><div class="line"></div><div class="line">d.get(<span class="string">"Jack"</span>, <span class="number">-1</span>)</div><div class="line"></div><div class="line"><span class="comment"># 综合应用</span></div><div class="line"><span class="comment"># 1. in</span></div><div class="line">dict = &#123;<span class="string">"1"</span>:<span class="string">"q"</span>, <span class="string">"2"</span>:<span class="string">"w"</span>, <span class="string">"3"</span>: <span class="string">"e"</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> key <span class="keyword">in</span> dict.keys(): <span class="comment"># dict.vaules()/dict.items()</span></div><div class="line">	print(key)</div><div class="line">	</div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">2</span></div><div class="line"></div><div class="line"><span class="comment"># 2.items</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> key <span class="keyword">in</span> dict.items():</div><div class="line">	print(key)</div><div class="line">	</div><div class="line">(<span class="string">'1'</span>, <span class="string">'q'</span>)</div><div class="line">(<span class="string">'3'</span>, <span class="string">'e'</span>)</div><div class="line">(<span class="string">'2'</span>, <span class="string">'w'</span>)</div></pre></td></tr></table></figure>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>删除一个key，需要使用<code>pop(key)</code>方法。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dict.pop(<span class="string">"age"</span>)</div></pre></td></tr></table></figure>
-<p>与list的比较</p>
-<ul>
-<li>查找和插入的速度快，不会随着key的增加而变慢；</li>
-<li>需要占用大量的内存。</li>
-</ul>
-<p>与list相反</p>
-<ul>
-<li>查找和插入的时间会随元素的增加而增加；</li>
-<li>占用空间小。</li>
-</ul>
-<p>dict是用空间来换时间的方法。</p>
-<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ol>
-<li>fromkeys(S[, v]): 创建并返回一个新的字典，S表示key，v表示value（没有的就为None）</li>
-<li></li>
-</ol>
-<h1 id="集合（set）"><a href="#集合（set）" class="headerlink" title="集合（set）"></a>集合（set）</h1><p>集合（set）与dict类似，是一组key的集合，但不存储value</p>
-<h2 id="创建set"><a href="#创建set" class="headerlink" title="创建set"></a>创建set</h2><p>创建set，需要提供一个list作为输入集合<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s </div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure></p>
-<p>在set中重复的元素会被自动过滤：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">4</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>&#125;</div></pre></td></tr></table></figure>
-<h2 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h2><p>通过<code>add(key)</code>方法可以将元素添加到set中，可以重复，但没有效果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.add(<span class="number">3</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.add(<span class="number">3</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h2><p>通过<code>remove(key)</code>可以删除元素：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.remove(<span class="number">3</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>&#125;</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="集合的应用"><a href="#集合的应用" class="headerlink" title="集合的应用"></a>集合的应用</h2><ol>
-<li>去掉集合中的重复元素</li>
-</ol>
-
-          
+          <h1 id="字典（dict）"><a href="#字典（dict）" class="headerlink" title="字典（dict）"></a>字典（dict）</h1><p>dict全称<code>dictionary</code>，其他语言中也称为map，使用键-值（key-value）存储。它使用的是哈希算法（hash）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 定义一个字典</span></div><div class="line">dict = &#123;<span class="string">"name"</span>:<span class="string">"Kang"</span>, <span class="string">"age"</span>: <span class="number">12</span>&#125;</div><div class="line">dict1 = dict(name=<span class="string">"Jack"</span>, age=<span class="number">34</span>) <span class="comment"># 注意key值没有引号</span></div><div class="line"></div><div class="line"><span class="comment"># 访问字典中的值</span></div><div class="line">print(dict[<span class="string">"name"</span>]) <span class="comment"># 如果key不存在，dict会报错，为了避免报错通过in关键字来判断</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 插入数据</span></div><div class="line">dict[<span class="string">"ni"</span>] = <span class="string">"wei"</span></div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/01/字典和集合/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
