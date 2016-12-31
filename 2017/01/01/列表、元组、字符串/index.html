@@ -1,0 +1,1225 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,列表,元组,字符串," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="列表列表与数组类似，它是一种有序的集合，可以随时添加或删除元素。
+列表中可以存放的数据：整数、浮点数、字符串、对象。
+内建函数^概念
+
+append(): 在末尾追加一个元素
+extend(list)：扩展列表，参数为一个列表
+len(list)：获取列表的长度
+inser(index, value)：向列表中插入元素，第一个参数表示索引位置，第二个参数表示插入的值
+remove()：移除指定元素">
+<meta property="og:type" content="article">
+<meta property="og:title" content="列表、元组、字符串">
+<meta property="og:url" content="openexw.github.io/2017/01/01/列表、元组、字符串/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="列表列表与数组类似，它是一种有序的集合，可以随时添加或删除元素。
+列表中可以存放的数据：整数、浮点数、字符串、对象。
+内建函数^概念
+
+append(): 在末尾追加一个元素
+extend(list)：扩展列表，参数为一个列表
+len(list)：获取列表的长度
+inser(index, value)：向列表中插入元素，第一个参数表示索引位置，第二个参数表示插入的值
+remove()：移除指定元素">
+<meta property="og:updated_time" content="2016-12-31T16:52:19.648Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="列表、元组、字符串">
+<meta name="twitter:description" content="列表列表与数组类似，它是一种有序的集合，可以随时添加或删除元素。
+列表中可以存放的数据：整数、浮点数、字符串、对象。
+内建函数^概念
+
+append(): 在末尾追加一个元素
+extend(list)：扩展列表，参数为一个列表
+len(list)：获取列表的长度
+inser(index, value)：向列表中插入元素，第一个参数表示索引位置，第二个参数表示插入的值
+remove()：移除指定元素">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="openexw.github.io/2017/01/01/列表、元组、字符串/"/>
+
+
+
+
+
+  <title> 列表、元组、字符串 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2017/01/01/列表、元组、字符串/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                列表、元组、字符串
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-01T00:49:52+08:00">
+                2017-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/01/列表、元组、字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/列表、元组、字符串/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/01/列表、元组、字符串/" class="leancloud_visitors" data-flag-title="列表、元组、字符串">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><p>列表与数组类似，它是一种有序的集合，可以随时添加或删除元素。</p>
+<p>列表中可以存放的数据：整数、浮点数、字符串、对象。</p>
+<p><strong>内建函数<a href="由语法规定存在的函数">^概念</a></strong></p>
+<ul>
+<li><strong>append()</strong>: 在末尾追加一个元素</li>
+<li><strong>extend(list)</strong>：扩展列表，参数为一个列表</li>
+<li><strong>len(list)</strong>：获取列表的长度</li>
+<li><strong>inser(index, value)</strong>：向列表中插入元素，第一个参数表示索引位置，第二个参数表示插入的值</li>
+<li><strong>remove()</strong>：移除指定元素</li>
+<li><strong>pop([index])</strong>：删除最后一个元素</li>
+<li><strong>reverse()</strong>：</li>
+<li><strong>index()</strong>：</li>
+<li><strong>sort([func, ][key, ][, reverse])</strong>：用指定的方式对列表进行排序，默认从小到大</li>
+<li><strong>del()</strong>：</li>
+</ul>
+<p>&lt;! – more –&gt;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">me = [<span class="string">"12"</span>, <span class="string">"e4"</span>]</div><div class="line"><span class="comment"># 插入元素</span></div><div class="line"><span class="comment"># append</span></div><div class="line">me.append(<span class="string">"ui"</span>)</div><div class="line"><span class="comment"># extend</span></div><div class="line">me.extend([<span class="string">"err"</span>, <span class="string">"erytui"</span>]);</div><div class="line"><span class="comment"># insert()</span></div><div class="line">me.insert(<span class="number">0</span>, <span class="string">"345"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 删除元素</span></div><div class="line"><span class="comment"># remove</span></div><div class="line">me.remove(<span class="string">"345"</span>)</div><div class="line"><span class="comment"># pop</span></div><div class="line">me.pop()</div><div class="line">me.pop(<span class="number">0</span>)</div><div class="line"><span class="comment"># del</span></div><div class="line"><span class="keyword">del</span> me[<span class="number">0</span>]</div><div class="line"></div><div class="line"><span class="comment"># 分片</span></div><div class="line">me[:] <span class="comment"># 表示切割出me的所有元素</span></div><div class="line">me[<span class="number">1</span>:<span class="number">3</span>] <span class="comment"># 切割下标索引值为1到3（不包含3）的元素</span></div><div class="line">me[:<span class="number">2</span>] <span class="comment"># 切割出0到2的元素</span></div><div class="line">me[<span class="number">1</span>:] <span class="comment"># 切割出1到最末尾的元素</span></div></pre></td></tr></table></figure></p>
+<h2 id="常用操作符"><a href="#常用操作符" class="headerlink" title="常用操作符"></a>常用操作符</h2><p>比较操作符</p>
+<h2 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a>查看帮助</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 查看list所有的内建函数</div><div class="line">dir(list)</div></pre></td></tr></table></figure>
+<p><strong>访问数组元素</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">me = [<span class="string">"12"</span>, <span class="string">"e4"</span>]</div><div class="line">me[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<h1 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h1><p>一个元组由数个逗号分隔的值组成。</p>
+<p>创建元组，使用小括号（不用也可以）， 输出时总是会出现小括号</p>
+<p><code>逗号</code>的决定性作用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建元组</span></div><div class="line"> t =  <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></div><div class="line"> t1 = <span class="string">"3"</span>,</div><div class="line"> t2 = () <span class="comment"># 创建一个空元组</span></div><div class="line"> t3 = (<span class="number">1</span>, <span class="number">4</span>,<span class="number">3</span>, ,<span class="number">5</span>)</div><div class="line"></div><div class="line"> <span class="comment"># 访问元组</span></div><div class="line"> t[<span class="number">0</span>] <span class="comment"># 1</span></div><div class="line"></div><div class="line"> <span class="comment"># 更新元组</span></div><div class="line">  <span class="comment"># 通过分片来做</span></div><div class="line">  ts = (<span class="string">"we"</span>, <span class="string">"er"</span>)</div><div class="line">  ts = ts[:<span class="number">1</span>]+(<span class="string">"Ya"</span>,)+ts[<span class="number">1</span>:] <span class="comment"># 输出结果：('we', 'Ya', 'er')</span></div><div class="line"> <span class="comment"># 删除元组</span></div><div class="line">  <span class="comment"># 通过分片来做</span></div></pre></td></tr></table></figure>
+<p><strong>Note：</strong></p>
+<p>元素中的元素不能被修改</p>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>内置函数</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>capitaliza()</td>
+<td>将字符串首字母大小</td>
+</tr>
+<tr>
+<td>casefold()</td>
+<td>正个字符串改为小写</td>
+</tr>
+<tr>
+<td>center(width)</td>
+<td>字符串居中，并用空格填充至width的新字符串</td>
+</tr>
+<tr>
+<td>count(sub[, start[, end]])</td>
+<td>返回sub在字符串出现的次数，start、end表示范围</td>
+</tr>
+<tr>
+<td>encode()</td>
+<td>以指定的字符编码格式对字符串进行编码</td>
+</tr>
+<tr>
+<td>endswith(sub[, start[, end]])</td>
+<td>检查字符串是否为sub结束，返回为布尔值</td>
+</tr>
+<tr>
+<td>expandtabs([tabsize=8])</td>
+<td>把字符串的tab(\t)符号转换为空格,默认为tabsize为8</td>
+</tr>
+<tr>
+<td>find(sub[, start[, end]])</td>
+<td>检查sub是否包含在字符串中，有这返回索引值，否则返回-1</td>
+</tr>
+<tr>
+<td>index()</td>
+<td>与find()的方法一样，不过不存在string中会产生一个异常</td>
+</tr>
+<tr>
+<td>isalnum()</td>
+<td>如果字符串中至少存在有一个字符并且所有字母都是字母或者数字则返回为true</td>
+</tr>
+<tr>
+<td>isalpha()</td>
+<td>至少存在有一个字符并且所有字母返回为true</td>
+</tr>
+<tr>
+<td>isdecimal()</td>
+<td>字符串中只包含十进制数返回为true</td>
+</tr>
+<tr>
+<td>isdigit()</td>
+<td>字符串中包含十进制数返回为True</td>
+</tr>
+<tr>
+<td>islower()</td>
+<td></td>
+</tr>
+<tr>
+<td>isnumeric()</td>
+<td></td>
+</tr>
+<tr>
+<td>isprintable()</td>
+<td></td>
+</tr>
+<tr>
+<td>isspace()</td>
+<td></td>
+</tr>
+<tr>
+<td>istitle()</td>
+<td></td>
+</tr>
+<tr>
+<td>isupper()</td>
+<td></td>
+</tr>
+<tr>
+<td>join()</td>
+<td></td>
+</tr>
+<tr>
+<td>ljust()</td>
+<td></td>
+</tr>
+<tr>
+<td>lower()</td>
+<td></td>
+</tr>
+<tr>
+<td>lstrip()</td>
+<td></td>
+</tr>
+<tr>
+<td>maketrans()</td>
+<td></td>
+</tr>
+<tr>
+<td>partition()</td>
+<td></td>
+</tr>
+<tr>
+<td>replace()</td>
+<td></td>
+</tr>
+<tr>
+<td>rfind()</td>
+<td></td>
+</tr>
+<tr>
+<td>rindex()</td>
+<td></td>
+</tr>
+<tr>
+<td>rjust()</td>
+<td></td>
+</tr>
+<tr>
+<td>rpartition()</td>
+<td></td>
+</tr>
+<tr>
+<td>rsplit()</td>
+<td></td>
+</tr>
+<tr>
+<td>rstrip()</td>
+<td></td>
+</tr>
+<tr>
+<td>split()</td>
+<td></td>
+</tr>
+<tr>
+<td>splitlines()</td>
+<td></td>
+</tr>
+<tr>
+<td>startswith()</td>
+<td></td>
+</tr>
+<tr>
+<td>strip()</td>
+<td></td>
+</tr>
+<tr>
+<td>swapcase()</td>
+<td></td>
+</tr>
+<tr>
+<td>title()</td>
+<td></td>
+</tr>
+<tr>
+<td>translate()</td>
+<td></td>
+</tr>
+<tr>
+<td>upper()</td>
+<td></td>
+</tr>
+<tr>
+<td>zfill()</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>format()</p>
+<p><strong>字符串格式化符号含义</strong></p>
+<table>
+<thead>
+<tr>
+<th>符   号</th>
+<th>说     明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%c</td>
+<td>格式化字符及其ASCII码</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>格式化字符串</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>格式化整数</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>格式化无符号八进制数</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>格式化无符号十六进制数</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>格式化无符号十六进制数（大写）</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>格式化定点数，可指定小数点后的精度</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>用科学计数法格式化定点数</td>
+</tr>
+<tr>
+<td>%E</td>
+<td>作用同%e，用科学计数法格式化定点数</td>
+</tr>
+<tr>
+<td>%g</td>
+<td>根据值的大小决定使用%f活%e</td>
+</tr>
+<tr>
+<td>%G</td>
+<td>作用同%g，根据值的大小决定使用%f或者%E</td>
+</tr>
+</tbody>
+</table>
+<p><strong>格式化操作符辅助指令</strong></p>
+<table>
+<thead>
+<tr>
+<th>符   号</th>
+<th>说     明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>m.n</td>
+<td>m是显示的最小总宽度，n是小数点后的位数</td>
+</tr>
+<tr>
+<td>-</td>
+<td>用于左对齐</td>
+</tr>
+<tr>
+<td>+</td>
+<td>在正数前面显示加号（+）</td>
+</tr>
+<tr>
+<td>#</td>
+<td>在八进制数前面显示 ‘0o’，在十六进制数前面显示 ‘0x’ 或 ‘0X’</td>
+</tr>
+<tr>
+<td>0</td>
+<td>显示的数字前面填充 ‘0’ 取代空格</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>符   号</th>
+<th>说   明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\’</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\”</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>发出系统响铃声</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格符</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符（TAB）</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>纵向制表符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车符</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页符</td>
+</tr>
+<tr>
+<td>\o</td>
+<td>八进制数代表的字符</td>
+</tr>
+<tr>
+<td>\x</td>
+<td>十六进制数代表的字符</td>
+</tr>
+<tr>
+<td>\0</td>
+<td>表示一个空字符</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h1 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h1><h2 id="列表、元组、字符串之间的比较"><a href="#列表、元组、字符串之间的比较" class="headerlink" title="列表、元组、字符串之间的比较"></a>列表、元组、字符串之间的比较</h2><p><strong>共同点：</strong></p>
+<ul>
+<li>都可以通过索引的到每一个元素</li>
+<li>默认的索引值都是从0开始的</li>
+<li>可以通过分片的方式得到一个范围内的元素的集合</li>
+<li><p>共同的操作符（重复操作符*、拼接操作符+、成员操作符in）</p>
+</li>
+<li><p>list(): 通过迭代把对象转换成列表</p>
+</li>
+<li>min(): 返回序列或者参数集合中最小值</li>
+<li>max(): 返回序列或者参数集合中最大值</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/列表/" rel="tag"># 列表</a>
+          
+            <a href="/tags/元组/" rel="tag"># 元组</a>
+          
+            <a href="/tags/字符串/" rel="tag"># 字符串</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/01/函数式编程/" rel="next" title="函数式编程">
+                <i class="fa fa-chevron-left"></i> 函数式编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/01/面向对象/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/01/列表、元组、字符串/"
+           data-title="列表、元组、字符串" data-url="openexw.github.io/2017/01/01/列表、元组、字符串/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Openoter" />
+          <p class="site-author-name" itemprop="name">Openoter</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#列表"><span class="nav-number">1.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用操作符"><span class="nav-number">1.1.</span> <span class="nav-text">常用操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看帮助"><span class="nav-number">1.2.</span> <span class="nav-text">查看帮助</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元组"><span class="nav-number">2.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">3.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#序列"><span class="nav-number">4.</span> <span class="nav-text">序列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表、元组、字符串之间的比较"><span class="nav-number">4.1.</span> <span class="nav-text">列表、元组、字符串之间的比较</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Openoter</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"openoter"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("4yBJ2Rhasby0Upv2IyRBIVoL-gzGzoHsz", "1PbbYpUV9yyYNVg3dxqKeACK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

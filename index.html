@@ -258,6 +258,1886 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2017/01/01/字典和集合/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/01/字典和集合/" itemprop="url">
+                  字典与集合
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-01T00:49:52+08:00">
+                2017-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/01/字典和集合/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/字典和集合/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/01/字典和集合/" class="leancloud_visitors" data-flag-title="字典与集合">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="字典（dict）"><a href="#字典（dict）" class="headerlink" title="字典（dict）"></a>字典（dict）</h1><p>dict全称<code>dictionary</code>，其他语言中也称为map，使用键-值（key-value）存储。它使用的是哈希算法（hash）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># 定义一个字典</div><div class="line">dict = &#123;"name":"Kang", "age": 12&#125;</div><div class="line">dict1 = dict(name="Jack", age=34) # 注意key值没有引号</div><div class="line"></div><div class="line"># 访问字典中的值</div><div class="line">print(dict["name"]) # 如果key不存在，dict会报错，为了避免报错通过in关键字来判断</div><div class="line"></div><div class="line"></div><div class="line"># 插入数据</div><div class="line">dict["ni"] = "wei"</div><div class="line"></div><div class="line">&lt;!-- more --&gt;</div></pre></td></tr></table></figure>
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p>除了初始化时的数据，dict也可以通过key放入。</p>
+<h2 id="访问数据"><a href="#访问数据" class="headerlink" title="访问数据"></a>访问数据</h2><p>避免key不存在的错误，有两种办法解决：（判断的是key）</p>
+<ul>
+<li>通过<code>in</code>判断key是否存在，返回不二值</li>
+<li>通过dict提供的<code>get()</code>方法，如果key不存在，返回<code>None</code>，或者或者自己给指定值。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="string">'Jack'</span> <span class="keyword">in</span> dict <span class="comment"># Flase</span></div><div class="line"></div><div class="line">d.get(<span class="string">"Jack"</span>) <span class="comment"># 返回None时，交互命令行不显示结果</span></div><div class="line"></div><div class="line">d.get(<span class="string">"Jack"</span>, <span class="number">-1</span>)</div><div class="line"></div><div class="line"><span class="comment"># 综合应用</span></div><div class="line"><span class="comment"># 1. in</span></div><div class="line">dict = &#123;<span class="string">"1"</span>:<span class="string">"q"</span>, <span class="string">"2"</span>:<span class="string">"w"</span>, <span class="string">"3"</span>: <span class="string">"e"</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> key <span class="keyword">in</span> dict.keys(): <span class="comment"># dict.vaules()/dict.items()</span></div><div class="line">	print(key)</div><div class="line">	</div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">2</span></div><div class="line"></div><div class="line"><span class="comment"># 2.items</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> key <span class="keyword">in</span> dict.items():</div><div class="line">	print(key)</div><div class="line">	</div><div class="line">(<span class="string">'1'</span>, <span class="string">'q'</span>)</div><div class="line">(<span class="string">'3'</span>, <span class="string">'e'</span>)</div><div class="line">(<span class="string">'2'</span>, <span class="string">'w'</span>)</div></pre></td></tr></table></figure>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>删除一个key，需要使用<code>pop(key)</code>方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dict.pop(<span class="string">"age"</span>)</div></pre></td></tr></table></figure>
+<p>与list的比较</p>
+<ul>
+<li>查找和插入的速度快，不会随着key的增加而变慢；</li>
+<li>需要占用大量的内存。</li>
+</ul>
+<p>与list相反</p>
+<ul>
+<li>查找和插入的时间会随元素的增加而增加；</li>
+<li>占用空间小。</li>
+</ul>
+<p>dict是用空间来换时间的方法。</p>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ol>
+<li>fromkeys(S[, v]): 创建并返回一个新的字典，S表示key，v表示value（没有的就为None）</li>
+<li></li>
+</ol>
+<h1 id="集合（set）"><a href="#集合（set）" class="headerlink" title="集合（set）"></a>集合（set）</h1><p>集合（set）与dict类似，是一组key的集合，但不存储value</p>
+<h2 id="创建set"><a href="#创建set" class="headerlink" title="创建set"></a>创建set</h2><p>创建set，需要提供一个list作为输入集合<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s </div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure></p>
+<p>在set中重复的元素会被自动过滤：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">4</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>&#125;</div></pre></td></tr></table></figure>
+<h2 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h2><p>通过<code>add(key)</code>方法可以将元素添加到set中，可以重复，但没有效果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.add(<span class="number">3</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.add(<span class="number">3</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h2><p>通过<code>remove(key)</code>可以删除元素：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.remove(<span class="number">3</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>&#125;</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="集合的应用"><a href="#集合的应用" class="headerlink" title="集合的应用"></a>集合的应用</h2><ol>
+<li>去掉集合中的重复元素</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2017/01/01/装饰器/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/01/装饰器/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-01T00:49:52+08:00">
+                2017-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/01/装饰器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/装饰器/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/01/装饰器/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是装饰器"><a href="#什么是装饰器" class="headerlink" title="什么是装饰器"></a>什么是装饰器</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2017/01/01/异常处理/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/01/异常处理/" itemprop="url">
+                  异常处理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-01T00:49:52+08:00">
+                2017-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/01/异常处理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/异常处理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/01/异常处理/" class="leancloud_visitors" data-flag-title="异常处理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h2 id="什么是异常？"><a href="#什么是异常？" class="headerlink" title="什么是异常？"></a>什么是异常？</h2><h2 id="try-except语句"><a href="#try-except语句" class="headerlink" title="try-except语句"></a>try-except语句</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="comment"># 检测范围</span></div><div class="line"><span class="keyword">except</span> Exception[<span class="keyword">as</span> name]:</div><div class="line">    <span class="comment"># 出现异常后的代码</span></div></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    f = open(<span class="string">"df.txt"</span>)</div><div class="line">    f.close()</div><div class="line"><span class="keyword">except</span> OsError:</div><div class="line">    print(<span class="string">"open NO"</span>)</div><div class="line">finaly:</div><div class="line"> <span class="comment"># 无论如何都会执行</span></div></pre></td></tr></table></figure>
+<h2 id="raish"><a href="#raish" class="headerlink" title="raish"></a>raish</h2><p>自己引发一个异常</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2017/01/01/文件系统/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/01/文件系统/" itemprop="url">
+                  文件系统
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-01T00:49:52+08:00">
+                2017-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/01/文件系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/文件系统/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/01/文件系统/" class="leancloud_visitors" data-flag-title="文件系统">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">"G:\\py\\note\\文件系统.md"</span>)</div></pre></td></tr></table></figure>
+<h2 id="文件对象的方法"><a href="#文件对象的方法" class="headerlink" title="文件对象的方法"></a>文件对象的方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>执行操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f.close()</td>
+<td>关闭文件</td>
+</tr>
+<tr>
+<td>f.read(size-1)</td>
+<td>从文件读取size个字符</td>
+</tr>
+<tr>
+<td>f.readline()</td>
+<td>以写入模式打开，如果文件存在，则在末尾追加写入</td>
+</tr>
+<tr>
+<td>f.write(str)</td>
+<td>将字符串str写入文件</td>
+</tr>
+<tr>
+<td>f.writeline(seq)</td>
+<td>向文件中写入字符串序列seq，seq是一个返回字符串的可迭代对象</td>
+</tr>
+<tr>
+<td>f.seek(offset, from)</td>
+<td>移动文件指针，从from（0-文件起始位置，1-当前位置，2-文件末尾）偏移offset个字节</td>
+</tr>
+<tr>
+<td>f.tell()</td>
+<td>返回当前文件中的位置</td>
+</tr>
+</tbody>
+</table>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/01/文件系统/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2017/01/01/模块/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/01/模块/" itemprop="url">
+                  模块
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-01T00:49:52+08:00">
+                2017-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/01/模块/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/模块/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/01/模块/" class="leancloud_visitors" data-flag-title="模块">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h1><p>模块是跟高级的封装</p>
+<ul>
+<li>容器 –&gt; 数据的封装</li>
+<li>函数 –&gt; 语句的封装</li>
+<li>类 –&gt; 方法和属性的封装</li>
+<li>模块 –&gt; 模块就是程序</li>
+</ul>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/01/模块/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2017/01/01/面向对象/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/01/面向对象/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-01T00:49:52+08:00">
+                2017-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/01/面向对象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/面向对象/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/01/面向对象/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2017/01/01/列表、元组、字符串/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/01/列表、元组、字符串/" itemprop="url">
+                  列表、元组、字符串
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-01T00:49:52+08:00">
+                2017-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/01/列表、元组、字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/列表、元组、字符串/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/01/列表、元组、字符串/" class="leancloud_visitors" data-flag-title="列表、元组、字符串">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><p>列表与数组类似，它是一种有序的集合，可以随时添加或删除元素。</p>
+<p>列表中可以存放的数据：整数、浮点数、字符串、对象。</p>
+<p><strong>内建函数<a href="由语法规定存在的函数">^概念</a></strong></p>
+<ul>
+<li><strong>append()</strong>: 在末尾追加一个元素</li>
+<li><strong>extend(list)</strong>：扩展列表，参数为一个列表</li>
+<li><strong>len(list)</strong>：获取列表的长度</li>
+<li><strong>inser(index, value)</strong>：向列表中插入元素，第一个参数表示索引位置，第二个参数表示插入的值</li>
+<li><strong>remove()</strong>：移除指定元素</li>
+<li><strong>pop([index])</strong>：删除最后一个元素</li>
+<li><strong>reverse()</strong>：</li>
+<li><strong>index()</strong>：</li>
+<li><strong>sort([func, ][key, ][, reverse])</strong>：用指定的方式对列表进行排序，默认从小到大</li>
+<li><strong>del()</strong>：</li>
+</ul>
+<p>&lt;! – more –&gt;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">me = [<span class="string">"12"</span>, <span class="string">"e4"</span>]</div><div class="line"><span class="comment"># 插入元素</span></div><div class="line"><span class="comment"># append</span></div><div class="line">me.append(<span class="string">"ui"</span>)</div><div class="line"><span class="comment"># extend</span></div><div class="line">me.extend([<span class="string">"err"</span>, <span class="string">"erytui"</span>]);</div><div class="line"><span class="comment"># insert()</span></div><div class="line">me.insert(<span class="number">0</span>, <span class="string">"345"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 删除元素</span></div><div class="line"><span class="comment"># remove</span></div><div class="line">me.remove(<span class="string">"345"</span>)</div><div class="line"><span class="comment"># pop</span></div><div class="line">me.pop()</div><div class="line">me.pop(<span class="number">0</span>)</div><div class="line"><span class="comment"># del</span></div><div class="line"><span class="keyword">del</span> me[<span class="number">0</span>]</div><div class="line"></div><div class="line"><span class="comment"># 分片</span></div><div class="line">me[:] <span class="comment"># 表示切割出me的所有元素</span></div><div class="line">me[<span class="number">1</span>:<span class="number">3</span>] <span class="comment"># 切割下标索引值为1到3（不包含3）的元素</span></div><div class="line">me[:<span class="number">2</span>] <span class="comment"># 切割出0到2的元素</span></div><div class="line">me[<span class="number">1</span>:] <span class="comment"># 切割出1到最末尾的元素</span></div></pre></td></tr></table></figure></p>
+<h2 id="常用操作符"><a href="#常用操作符" class="headerlink" title="常用操作符"></a>常用操作符</h2><p>比较操作符</p>
+<h2 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a>查看帮助</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 查看list所有的内建函数</div><div class="line">dir(list)</div></pre></td></tr></table></figure>
+<p><strong>访问数组元素</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">me = [<span class="string">"12"</span>, <span class="string">"e4"</span>]</div><div class="line">me[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<h1 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h1><p>一个元组由数个逗号分隔的值组成。</p>
+<p>创建元组，使用小括号（不用也可以）， 输出时总是会出现小括号</p>
+<p><code>逗号</code>的决定性作用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建元组</span></div><div class="line"> t =  <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></div><div class="line"> t1 = <span class="string">"3"</span>,</div><div class="line"> t2 = () <span class="comment"># 创建一个空元组</span></div><div class="line"> t3 = (<span class="number">1</span>, <span class="number">4</span>,<span class="number">3</span>, ,<span class="number">5</span>)</div><div class="line"></div><div class="line"> <span class="comment"># 访问元组</span></div><div class="line"> t[<span class="number">0</span>] <span class="comment"># 1</span></div><div class="line"></div><div class="line"> <span class="comment"># 更新元组</span></div><div class="line">  <span class="comment"># 通过分片来做</span></div><div class="line">  ts = (<span class="string">"we"</span>, <span class="string">"er"</span>)</div><div class="line">  ts = ts[:<span class="number">1</span>]+(<span class="string">"Ya"</span>,)+ts[<span class="number">1</span>:] <span class="comment"># 输出结果：('we', 'Ya', 'er')</span></div><div class="line"> <span class="comment"># 删除元组</span></div><div class="line">  <span class="comment"># 通过分片来做</span></div></pre></td></tr></table></figure>
+<p><strong>Note：</strong></p>
+<p>元素中的元素不能被修改</p>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>内置函数</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>capitaliza()</td>
+<td>将字符串首字母大小</td>
+</tr>
+<tr>
+<td>casefold()</td>
+<td>正个字符串改为小写</td>
+</tr>
+<tr>
+<td>center(width)</td>
+<td>字符串居中，并用空格填充至width的新字符串</td>
+</tr>
+<tr>
+<td>count(sub[, start[, end]])</td>
+<td>返回sub在字符串出现的次数，start、end表示范围</td>
+</tr>
+<tr>
+<td>encode()</td>
+<td>以指定的字符编码格式对字符串进行编码</td>
+</tr>
+<tr>
+<td>endswith(sub[, start[, end]])</td>
+<td>检查字符串是否为sub结束，返回为布尔值</td>
+</tr>
+<tr>
+<td>expandtabs([tabsize=8])</td>
+<td>把字符串的tab(\t)符号转换为空格,默认为tabsize为8</td>
+</tr>
+<tr>
+<td>find(sub[, start[, end]])</td>
+<td>检查sub是否包含在字符串中，有这返回索引值，否则返回-1</td>
+</tr>
+<tr>
+<td>index()</td>
+<td>与find()的方法一样，不过不存在string中会产生一个异常</td>
+</tr>
+<tr>
+<td>isalnum()</td>
+<td>如果字符串中至少存在有一个字符并且所有字母都是字母或者数字则返回为true</td>
+</tr>
+<tr>
+<td>isalpha()</td>
+<td>至少存在有一个字符并且所有字母返回为true</td>
+</tr>
+<tr>
+<td>isdecimal()</td>
+<td>字符串中只包含十进制数返回为true</td>
+</tr>
+<tr>
+<td>isdigit()</td>
+<td>字符串中包含十进制数返回为True</td>
+</tr>
+<tr>
+<td>islower()</td>
+<td></td>
+</tr>
+<tr>
+<td>isnumeric()</td>
+<td></td>
+</tr>
+<tr>
+<td>isprintable()</td>
+<td></td>
+</tr>
+<tr>
+<td>isspace()</td>
+<td></td>
+</tr>
+<tr>
+<td>istitle()</td>
+<td></td>
+</tr>
+<tr>
+<td>isupper()</td>
+<td></td>
+</tr>
+<tr>
+<td>join()</td>
+<td></td>
+</tr>
+<tr>
+<td>ljust()</td>
+<td></td>
+</tr>
+<tr>
+<td>lower()</td>
+<td></td>
+</tr>
+<tr>
+<td>lstrip()</td>
+<td></td>
+</tr>
+<tr>
+<td>maketrans()</td>
+<td></td>
+</tr>
+<tr>
+<td>partition()</td>
+<td></td>
+</tr>
+<tr>
+<td>replace()</td>
+<td></td>
+</tr>
+<tr>
+<td>rfind()</td>
+<td></td>
+</tr>
+<tr>
+<td>rindex()</td>
+<td></td>
+</tr>
+<tr>
+<td>rjust()</td>
+<td></td>
+</tr>
+<tr>
+<td>rpartition()</td>
+<td></td>
+</tr>
+<tr>
+<td>rsplit()</td>
+<td></td>
+</tr>
+<tr>
+<td>rstrip()</td>
+<td></td>
+</tr>
+<tr>
+<td>split()</td>
+<td></td>
+</tr>
+<tr>
+<td>splitlines()</td>
+<td></td>
+</tr>
+<tr>
+<td>startswith()</td>
+<td></td>
+</tr>
+<tr>
+<td>strip()</td>
+<td></td>
+</tr>
+<tr>
+<td>swapcase()</td>
+<td></td>
+</tr>
+<tr>
+<td>title()</td>
+<td></td>
+</tr>
+<tr>
+<td>translate()</td>
+<td></td>
+</tr>
+<tr>
+<td>upper()</td>
+<td></td>
+</tr>
+<tr>
+<td>zfill()</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>format()</p>
+<p><strong>字符串格式化符号含义</strong></p>
+<table>
+<thead>
+<tr>
+<th>符   号</th>
+<th>说     明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%c</td>
+<td>格式化字符及其ASCII码</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>格式化字符串</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>格式化整数</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>格式化无符号八进制数</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>格式化无符号十六进制数</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>格式化无符号十六进制数（大写）</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>格式化定点数，可指定小数点后的精度</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>用科学计数法格式化定点数</td>
+</tr>
+<tr>
+<td>%E</td>
+<td>作用同%e，用科学计数法格式化定点数</td>
+</tr>
+<tr>
+<td>%g</td>
+<td>根据值的大小决定使用%f活%e</td>
+</tr>
+<tr>
+<td>%G</td>
+<td>作用同%g，根据值的大小决定使用%f或者%E</td>
+</tr>
+</tbody>
+</table>
+<p><strong>格式化操作符辅助指令</strong></p>
+<table>
+<thead>
+<tr>
+<th>符   号</th>
+<th>说     明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>m.n</td>
+<td>m是显示的最小总宽度，n是小数点后的位数</td>
+</tr>
+<tr>
+<td>-</td>
+<td>用于左对齐</td>
+</tr>
+<tr>
+<td>+</td>
+<td>在正数前面显示加号（+）</td>
+</tr>
+<tr>
+<td>#</td>
+<td>在八进制数前面显示 ‘0o’，在十六进制数前面显示 ‘0x’ 或 ‘0X’</td>
+</tr>
+<tr>
+<td>0</td>
+<td>显示的数字前面填充 ‘0’ 取代空格</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>符   号</th>
+<th>说   明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\’</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\”</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>发出系统响铃声</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格符</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符（TAB）</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>纵向制表符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车符</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页符</td>
+</tr>
+<tr>
+<td>\o</td>
+<td>八进制数代表的字符</td>
+</tr>
+<tr>
+<td>\x</td>
+<td>十六进制数代表的字符</td>
+</tr>
+<tr>
+<td>\0</td>
+<td>表示一个空字符</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h1 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h1><h2 id="列表、元组、字符串之间的比较"><a href="#列表、元组、字符串之间的比较" class="headerlink" title="列表、元组、字符串之间的比较"></a>列表、元组、字符串之间的比较</h2><p><strong>共同点：</strong></p>
+<ul>
+<li>都可以通过索引的到每一个元素</li>
+<li>默认的索引值都是从0开始的</li>
+<li>可以通过分片的方式得到一个范围内的元素的集合</li>
+<li><p>共同的操作符（重复操作符*、拼接操作符+、成员操作符in）</p>
+</li>
+<li><p>list(): 通过迭代把对象转换成列表</p>
+</li>
+<li>min(): 返回序列或者参数集合中最小值</li>
+<li>max(): 返回序列或者参数集合中最大值</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2017/01/01/函数式编程/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/01/函数式编程/" itemprop="url">
+                  函数式编程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-01T00:49:52+08:00">
+                2017-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/01/函数式编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/函数式编程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/01/函数式编程/" class="leancloud_visitors" data-flag-title="函数式编程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>什么是函数式编程？</p>
+<p>函数：function</p>
+<p>函数式：functional，一种编程范式</p>
+<h2 id="函数式特点："><a href="#函数式特点：" class="headerlink" title="函数式特点："></a>函数式特点：</h2><ul>
+<li>把计算视为函数</li>
+<li>不需要变量，没有副作用，测试简单</li>
+<li>支持高阶函数，代码简洁</li>
+</ul>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/01/函数式编程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2017/01/01/函数/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/01/函数/" itemprop="url">
+                  函数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-01T00:49:52+08:00">
+                2017-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/01/函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/函数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/01/函数/" class="leancloud_visitors" data-flag-title="函数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><p>使用<code>def</code>关键字<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">MyFun</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"HH"</span>)</div><div class="line"></div><div class="line">MyFun()</div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/01/函数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/12/30/7. controll/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -417,1685 +2297,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/12/30/6. operator/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Openoter">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/30/6. operator/" itemprop="url">
-                  运算符（六）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-30T09:13:14+08:00">
-                2016-12-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/30/6. operator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/6. operator/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/30/6. operator/" class="leancloud_visitors" data-flag-title="运算符（六）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>运算符是处理数据的基本方法，用来从现有数据得到新的数据。</p>
-<h2 id="加法运算符"><a href="#加法运算符" class="headerlink" title="加法运算符"></a>加法运算符</h2><p>加法运算符（<code>+</code>）是最常见的运算符之一，但是使用规则却相对复杂。因为在JavaScript语言里面，这个运算符可以完成两种运算(<code>+</code>):</p>
-<ul>
-<li>既可以处理算术的加法;</li>
-<li>也可以用作字符串连接。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 加法</span></div><div class="line"><span class="number">1</span> + <span class="number">1</span> <span class="comment">// 2</span></div><div class="line"><span class="literal">true</span> + <span class="literal">true</span> <span class="comment">// 2</span></div><div class="line"><span class="number">1</span> + <span class="literal">true</span> <span class="comment">// 2</span></div><div class="line"></div><div class="line"><span class="comment">// 字符串连接</span></div><div class="line"><span class="string">'1'</span> + <span class="string">'1'</span> <span class="comment">// "11"</span></div><div class="line"><span class="string">'1.1'</span> + <span class="string">'1.1'</span> <span class="comment">// "1.11.1"</span></div></pre></td></tr></table></figure>
-<p>它的算法步骤如下。</p>
-<ol>
-<li>如果运算子是对象，先自动转成原始类型的值（即先执行该对象的<code>valueOf</code>方法，如果结果还不是原始类型的值，再执行<code>toString</code>方法；如果对象是<code>Date</code>实例，则先执行<code>toString</code>方法）。</li>
-<li>两个运算子都是原始类型的值以后，只要有一个运算子是字符串，则两个运算子都转为字符串，执行字符串连接运算。</li>
-<li>否则，两个运算子都转为数值，执行加法运算。</li>
-</ol>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/30/6. operator/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/12/30/5. string/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Openoter">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/30/5. string/" itemprop="url">
-                  字符串（五）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-30T09:13:14+08:00">
-                2016-12-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/30/5. string/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/5. string/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/30/5. string/" class="leancloud_visitors" data-flag-title="字符串（五）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h1><p>字符串就是零个或多个排在一起的字符，放在单引号或双引号之中</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'abc'</span></div><div class="line"><span class="string">"abc"</span></div></pre></td></tr></table></figure>
-<p>单引号字符串的内部，可以使用双引号。双引号字符串的内部，可以使用单引号。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'key = "value"'</span></div><div class="line"><span class="string">"It's a long journey"</span></div></pre></td></tr></table></figure>
-<p>如果要在单引号字符串的内部，使用单引号（或者在双引号字符串的内部，使用双引号），就必须在内部的单引号（或者双引号）前面加上反斜杠(<code>\</code>)，用来转义。</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/30/5. string/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/12/30/4. number/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Openoter">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/30/4. number/" itemprop="url">
-                  数值（四）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-30T09:13:14+08:00">
-                2016-12-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/30/4. number/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/4. number/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/30/4. number/" class="leancloud_visitors" data-flag-title="数值（四）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一、数值"><a href="#一、数值" class="headerlink" title="一、数值"></a>一、数值</h1><h2 id="整数和浮点数"><a href="#整数和浮点数" class="headerlink" title="整数和浮点数"></a>整数和浮点数</h2><p>JavaScript内部，所有数字都是以64位浮点数形式储存，即使整数也是如此。所以，1与1.0是相同的，是同一个数。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span> === <span class="number">1.0</span> <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<p>这就说明，在JavaScript语言的底层，根本没有整数，所有数字都是小数（64位浮点数）</p>
-<p>由于浮点数不是精确的值，所以涉及小数的比较和运算要特别小心。某些运算只有整数才能完成，此时JavaScript会自动把64位浮点数，转成32位整数，然后再进行运算。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="number">0.1</span> + <span class="number">0.2</span> === <span class="number">0.3</span></div><div class="line"><span class="comment">// false</span></div><div class="line"></div><div class="line"><span class="number">0.3</span> / <span class="number">0.1</span></div><div class="line"><span class="comment">// 2.9999999999999996</span></div><div class="line"></div><div class="line">(<span class="number">0.3</span> - <span class="number">0.2</span>) === (<span class="number">0.2</span> - <span class="number">0.1</span>)</div><div class="line"><span class="comment">// false</span></div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/30/4. number/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/12/30/3. data_type/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Openoter">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/30/3. data_type/" itemprop="url">
-                  数据类型（三）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-30T09:13:14+08:00">
-                2016-12-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/30/3. data_type/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/3. data_type/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/30/3. data_type/" class="leancloud_visitors" data-flag-title="数据类型（三）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>JavaScript语言的每一个值，都属于某一种数据类型。JavaScript的数据类型，共有六种。（es6中新增了一种Symbol）</p>
-<p>通常，我们将数值、字符串、布尔值称为原始类型（primitive type）的了，即它是最基本的数据类型。所以对象又称为合成类型（complex type）（复合类型）的值。</p>
-<h1 id="二、基本数据类型"><a href="#二、基本数据类型" class="headerlink" title="二、基本数据类型"></a>二、基本数据类型</h1><p>基本类型的分类：</p>
-<ol>
-<li>数值（Number）：整数和小数（比如1和3.14）</li>
-<li>字符串（String）：字符组成的文本（比如”Hello World”）</li>
-<li>布尔值（Boolean）：true（真）和false（假）两个特定值</li>
-<li>Undefined：表示“未定义”或不存在，即此处目前没有任何值</li>
-<li>Null：表示空缺，即此处应该有一个值，但目前为空</li>
-</ol>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/30/3. data_type/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/12/30/2. grammar/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Openoter">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/30/2. grammar/" itemprop="url">
-                  基本语法（二）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-30T09:13:14+08:00">
-                2016-12-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/30/2. grammar/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/2. grammar/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/30/2. grammar/" class="leancloud_visitors" data-flag-title="基本语法（二）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="一、语句"><a href="#一、语句" class="headerlink" title="一、语句"></a>一、语句</h2><p>JavaScript程序的执行单位为行（line），也就是一行一行地执行。一般情况下，每一行就是一个语句。</p>
-<p>语句（statement）是为了完成某种任务而进行的操作，如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span> + <span class="number">2</span>;</div></pre></td></tr></table></figure>
-<p>先用<code>var</code>声明了变量<code>a</code>，然后将<code>1+2</code>的值赋值给<code>a</code>。</p>
-<p>语句以分号结尾，一个分号就表示一个语句结束。多个语句可以写在一行内。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>+<span class="number">2</span>; <span class="keyword">var</span> b = a+<span class="number">3</span>;</div></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/30/2. grammar/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/12/30/1. javascript概述/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Openoter">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/30/1. javascript概述/" itemprop="url">
-                  Javascript概述（一）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-30T09:13:14+08:00">
-                2016-12-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/30/1. javascript概述/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/1. javascript概述/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/30/1. javascript概述/" class="leancloud_visitors" data-flag-title="Javascript概述（一）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="1、什么是JavaScript"><a href="#1、什么是JavaScript" class="headerlink" title="1、什么是JavaScript"></a>1、什么是JavaScript</h1><p>JavaScript是一种轻量级的脚本语言。</p>
-<p>脚本语言：指的是它不具备开发操作系统的能力，而是只用来编写控制其他大型应用程序的“脚本”。</p>
-<p><strong>JavaScript的组成</strong>：</p>
-<ul>
-<li>ECMAScript:一套标准，最新的标准是ES6（简称）<ul>
-<li>基本的语法构造：比如操作符、控制结构、语句</li>
-<li>标准库：Array、Date、Math等</li>
-</ul>
-</li>
-<li>BOM：Browser Object Model，浏览器对象模型</li>
-<li>DOM：Document Object Model，文档对象模型</li>
-</ul>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/30/1. javascript概述/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/12/29/python常见异常/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Openoter">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/29/python常见异常/" itemprop="url">
-                  python常见异常
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-29T23:33:40+08:00">
-                2016-12-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/29/python常见异常/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/29/python常见异常/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/29/python常见异常/" class="leancloud_visitors" data-flag-title="python常见异常">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<table>
-<thead>
-<tr>
-<th>异常名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AssertionError</td>
-<td>断言语句（assert）失败</td>
-</tr>
-<tr>
-<td>AttributeError</td>
-<td>尝试访问未知的对象属性</td>
-</tr>
-<tr>
-<td>EOFError</td>
-<td>用户输入文件末尾标志EOF（Ctrl+d）</td>
-</tr>
-<tr>
-<td>FloatingPointError</td>
-<td>浮点计算错误</td>
-</tr>
-<tr>
-<td>GeneratorExit</td>
-<td>generator.close()方法被调用的时候</td>
-</tr>
-<tr>
-<td>ImportError</td>
-<td>导入模块失败的时候</td>
-</tr>
-<tr>
-<td>IndexError</td>
-<td>索引超出序列的范围</td>
-</tr>
-<tr>
-<td>KeyError</td>
-<td>字典中查找一个不存在的关键字</td>
-</tr>
-<tr>
-<td>KeyboardInterrupt</td>
-<td>用户输入中断键（Ctrl+c）</td>
-</tr>
-<tr>
-<td>MemoryError</td>
-<td>内存溢出（可通过删除对象释放内存）</td>
-</tr>
-<tr>
-<td>NameError</td>
-<td>尝试访问一个不存在的变量</td>
-</tr>
-<tr>
-<td>NotImplementedError</td>
-<td>尚未实现的方法</td>
-</tr>
-<tr>
-<td>OSError</td>
-<td>操作系统产生的异常（例如打开一个不存在的文件）</td>
-</tr>
-<tr>
-<td>OverflowError</td>
-<td>数值运算超出最大限制</td>
-</tr>
-<tr>
-<td>ReferenceError</td>
-<td>弱引用（weak reference）试图访问一个已经被垃圾回收机制回收了的对象</td>
-</tr>
-<tr>
-<td>RuntimeError</td>
-<td>一般的运行时错误</td>
-</tr>
-<tr>
-<td>StopIteration</td>
-<td>迭代器没有更多的值</td>
-</tr>
-<tr>
-<td>SyntaxError</td>
-<td>Python的语法错误</td>
-</tr>
-<tr>
-<td>IndentationError</td>
-<td>缩进错误</td>
-</tr>
-<tr>
-<td>TabError</td>
-<td>Tab和空格混合使用</td>
-</tr>
-<tr>
-<td>SystemError</td>
-<td>Python编译器系统错误</td>
-</tr>
-<tr>
-<td>SystemExit</td>
-<td>Python编译器进程被关闭</td>
-</tr>
-<tr>
-<td>TypeError</td>
-<td>不同类型间的无效操作</td>
-</tr>
-<tr>
-<td>UnboundLocalError</td>
-<td>访问一个未初始化的本地变量（NameError的子类）</td>
-</tr>
-<tr>
-<td>UnicodeError</td>
-<td>Unicode相关的错误（ValueError的子类）</td>
-</tr>
-<tr>
-<td>UnicodeEncodeError</td>
-<td>Unicode编码时的错误（UnicodeError的子类）</td>
-</tr>
-<tr>
-<td>UnicodeDecodeError</td>
-<td>Unicode解码时的错误（UnicodeError的子类）</td>
-</tr>
-<tr>
-<td>UnicodeTranslateError</td>
-<td>Unicode转换时的错误（UnicodeError的子类）</td>
-</tr>
-<tr>
-<td>ValueError</td>
-<td>传入无效的参数</td>
-</tr>
-<tr>
-<td>ZeroDivisionError</td>
-<td>除数为零</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/12/26/数据类型/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Openoter">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/26/数据类型/" itemprop="url">
-                  JavaScript数据类型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-26T17:17:08+08:00">
-                2016-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/26/数据类型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/26/数据类型/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/26/数据类型/" class="leancloud_visitors" data-flag-title="JavaScript数据类型">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <!--数据类型-->
-<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>JavaScript语言的每一个值，都属于某一种数据类型。JavaScript的数据类型，共有六种。（es6中新增了一种Symbol）</p>
-<p>通常，我们将数值、字符串、布尔值称为原始类型（primitive type）的了，即它是最基本的数据类型。所以对象又称为合成类型（complex type）（复合类型）的值。</p>
-<h1 id="二、基本数据类型"><a href="#二、基本数据类型" class="headerlink" title="二、基本数据类型"></a>二、基本数据类型</h1><p>基本类型的分类：</p>
-<ol>
-<li>数值（Number）：整数和小数（比如1和3.14）</li>
-<li>字符串（String）：字符组成的文本（比如”Hello World”）</li>
-<li>布尔值（Boolean）：true（真）和false（假）两个特定值</li>
-<li>Undefined：表示“未定义”或不存在，即此处目前没有任何值</li>
-<li>Null：表示空缺，即此处应该有一个值，但目前为空</li>
-</ol>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/26/数据类型/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/12/22/git笔记初步/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Openoter">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/22/git笔记初步/" itemprop="url">
-                  git笔记初步
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-22T17:32:40+08:00">
-                2016-12-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/22/git笔记初步/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/22/git笔记初步/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/22/git笔记初步/" class="leancloud_visitors" data-flag-title="git笔记初步">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">ls <span class="comment"># 列出文件夹下的目录和文件</span></div><div class="line">ls <span class="_">-a</span> <span class="comment"># 列出全部的文件，连同隐藏文件</span></div><div class="line">ls <span class="_">-l</span> <span class="comment"># 列出长数据串，包含文件的属性与权限数据</span></div><div class="line"><span class="built_in">cd</span> 文件夹 <span class="comment">#进入指定的目录</span></div><div class="line"><span class="built_in">cd</span> .. <span class="comment"># 返回上一级</span></div><div class="line">mkdir 文件夹名 <span class="comment"># 创建一个文件夹 </span></div><div class="line"><span class="built_in">pwd</span> <span class="comment"># 返回当前所在路径</span></div><div class="line">rm t.txt <span class="comment"># 删除t.txt文件</span></div><div class="line">rm 文件夹名 -r <span class="comment"># 删除www文件夹（递归删除）</span></div><div class="line">rmdir 文件夹名 <span class="comment">#删除文件夹</span></div><div class="line">touch filename1 filename2 <span class="comment"># 创建多个文件</span></div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/22/git笔记初步/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2138,7 +2344,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2156,7 +2362,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2196,7 +2402,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
