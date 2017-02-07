@@ -1,0 +1,899 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,多媒体," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1. 使用通知（Notification）1.1 通知的基本用法步骤：
+
+创建NotificationManager对通知进行管理（getSystemService()得到）
+创建一个Notification对象（用于存储通知所需的各种信息）
+对通知栏的布局进行设定
+调用notify()显示通知">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手机多媒体">
+<meta property="og:url" content="openexw.github.io/2016/07/16/手机多媒体/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. 使用通知（Notification）1.1 通知的基本用法步骤：
+
+创建NotificationManager对通知进行管理（getSystemService()得到）
+创建一个Notification对象（用于存储通知所需的各种信息）
+对通知栏的布局进行设定
+调用notify()显示通知">
+<meta property="og:updated_time" content="2016-07-15T17:44:42.518Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手机多媒体">
+<meta name="twitter:description" content="1. 使用通知（Notification）1.1 通知的基本用法步骤：
+
+创建NotificationManager对通知进行管理（getSystemService()得到）
+创建一个Notification对象（用于存储通知所需的各种信息）
+对通知栏的布局进行设定
+调用notify()显示通知">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="openexw.github.io/2016/07/16/手机多媒体/"/>
+
+
+
+
+
+  <title> 手机多媒体 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2016/07/16/手机多媒体/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                手机多媒体
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-16T01:36:18+08:00">
+                2016-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/16/手机多媒体/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/16/手机多媒体/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/16/手机多媒体/" class="leancloud_visitors" data-flag-title="手机多媒体">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <excerpt in="" index="" |="" 首页摘要=""> 
+
+<h2 id="1-使用通知（Notification）"><a href="#1-使用通知（Notification）" class="headerlink" title="1. 使用通知（Notification）"></a>1. 使用通知（Notification）</h2><h3 id="1-1-通知的基本用法"><a href="#1-1-通知的基本用法" class="headerlink" title="1.1 通知的基本用法"></a>1.1 通知的基本用法</h3><p>步骤：</p>
+<ul>
+<li>创建<code>NotificationManager</code>对通知进行管理（getSystemService()得到）</li>
+<li>创建一个<code>Notification</code>对象（用于存储通知所需的各种信息）</li>
+<li>对通知栏的布局进行设定</li>
+<li><p>调用<code>notify()</code>显示通知</p>
+<a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+</the></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 创建NotificationManager</span></div><div class="line">NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);</div><div class="line"><span class="comment">//2. 创建一个`Notification`对象</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 参数说明：</div><div class="line"> * 第一个参数：icon/图标</div><div class="line"> * 第二个参数：指定通知的 ticker 内容</div><div class="line"> * 第三个参数：指定通知被创建的时间，以毫秒为单位</div><div class="line"> */</div><div class="line">Notification notification = <span class="keyword">new</span> Notification(R.drawable.icon, <span class="string">"This is ticker text"</span>,</div><div class="line">System.currentTimeMillis());</div><div class="line"></div><div class="line"><span class="comment">//3. 对通知栏的布局进行设定</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 参数说明：</div><div class="line"> * 第一个参数：上下文环境</div><div class="line"> * 第二个参数：指定通知的标题内容</div><div class="line"> * 第三个参数：指定通知的正文内容（下拉系统状态栏就可以看到这部分内容）</div><div class="line"> * 第四个参数：PendingIntent对象（用于指定点击通知栏跳转到指定页面）</div><div class="line"> */</div><div class="line">nonotification.setLatestEventInfo(context, <span class="string">"This is content title"</span>, <span class="string">"This iscontent text"</span>, <span class="keyword">null</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//4. 调用`notify()`显示通知</span></div><div class="line">manager.notify();</div></pre></td></tr></table></figure>
+<p><strong>实例：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Button send_notify;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.main);</div><div class="line">        send_notify = (Button) findViewById(R.id.send);</div><div class="line">        send_notify.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                <span class="comment">//1. 创建NotificationManager</span></div><div class="line">                NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);</div><div class="line">                <span class="comment">//2. 创建一个`Notification`对象</span></div><div class="line">                Notification notification = <span class="keyword">new</span> Notification(R.drawable.ic_launcher, <span class="string">"Hello"</span>, System.currentTimeMillis());</div><div class="line">                <span class="comment">//创建一个intent对象，用于点击notification后跳转到NotificationActivity页面</span></div><div class="line">                Intent intent = <span class="keyword">new</span> Intent(MyActivity.<span class="keyword">this</span>, NotificationActivity.class);</div><div class="line">                PendingIntent pi = PendingIntent.getActivity(MyActivity.<span class="keyword">this</span>, <span class="number">0</span>, intent, PendingIntent.FLAG_CANCEL_CURRENT);</div><div class="line">                <span class="comment">//3. 对通知栏的布局进行设定</span></div><div class="line">                notification.setLatestEventInfo(MyActivity.<span class="keyword">this</span>, <span class="string">"This is Title"</span>, <span class="string">"This is Content"</span>, pi);</div><div class="line">                <span class="comment">//4. 调用`notify()`显示通知</span></div><div class="line">                manager.notify(<span class="number">1</span>,notification);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>取消通知：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NotificationActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> TextView tv;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">       setContentView(R.layout.notification_layout);</div><div class="line">        <span class="comment">//创建NotificationManager对象</span></div><div class="line">        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);</div><div class="line">        <span class="comment">//取消通知</span></div><div class="line">        manager.cancel(<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>PendingIntent</strong><br>类似于Intent，都可以启动活动、启动服务、发送广播等。不同的是Intent更倾向于<strong>立即执行某个动作</strong>，PendingIntent更加倾向于在<strong>某个合适的时机去执行某个动作</strong>。</p>
+<p>PendingIntent静态方法：</p>
+<ul>
+<li>getActivity()方法</li>
+<li>getBroadcast()方法</li>
+<li><p>getService()<br>他们的参数都是一样的，分别为<code>Content</code>、第二个参数一般用不到（0）、第三个是Intent对象、第四个用于确定PendingIntent 的行为</p>
+<p>PendingIntent 的行为的行为分别为：</p>
+<ul>
+<li>FLAG_ONE_SHOT </li>
+<li>FLAG_NO_CREATE</li>
+<li>FLAG_CANCEL_CURRENT</li>
+<li>FLAG_UPDATE_CURRENT <h3 id="1-2-通知的高级技巧"><a href="#1-2-通知的高级技巧" class="headerlink" title="1.2 通知的高级技巧"></a>1.2 通知的高级技巧</h3><strong>sound属性</strong><br><strong>sound属性</strong> 是当有通知时发出声音提醒。sound属性一个Uri对象。<br>比如：手机的/system/media/audio/ringtones 目录下有一个 Basic_tone.ogg音频文件。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Uri soundUri = Uri.fromFile(newFile(<span class="string">"/system/media/audio/ringtones/Basic_tone.ogg"</span>));</div><div class="line">notification.sound = soundUri;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>vibrate属性</strong><br>通知来时发出震动，它是一个长整型数组，用于设置手机静止和手机震动的时长。下标为0表示静止的时长，为1表示震动的时长，为2表示静止的时长，一次类推。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">long</span>[] vibrates = &#123;<span class="number">0</span>, <span class="number">1000</span>, <span class="number">1000</span>, <span class="number">1000</span>&#125;;</div><div class="line">notification.vibrate = vibrates;</div></pre></td></tr></table></figure></p>
+<p>使用<strong>vibrat</strong>是需要权限的。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="attr">package</span>=<span class="string">"com.example.notificationtest"</span></div><div class="line"><span class="attr">android:versionCode</span>=<span class="string">"1"</span></div><div class="line"><span class="attr">android:versionName</span>=<span class="string">"1.0"</span> &gt;</div><div class="line">    ……</div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.VIBRATE"</span> /&gt;</span></div><div class="line">    ……</div><div class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>控制手机LED显示</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//控制LED灯的颜色</span></div><div class="line">notification.ledARGB = Color.GREEN;</div><div class="line"><span class="comment">//LED灯亮起的时长</span></div><div class="line">notification.ledOnMS = <span class="number">1000</span>;</div><div class="line"><span class="comment">// LED 灯暗去的时长</span></div><div class="line">notification.ledOffMS = <span class="number">1000</span>;</div><div class="line"><span class="comment">//指定通知的一些行为（包括显示 LED 灯）</span></div><div class="line">notification.flags = Notification.FLAG_SHOW_LIGHTS;</div><div class="line"></div><div class="line"><span class="comment">//默认的效果</span></div><div class="line">notification.defaults = Notification.DEFAULT_ALL;</div></pre></td></tr></table></figure></p>
+<h2 id="2-接收和发送短信"><a href="#2-接收和发送短信" class="headerlink" title="2. 接收和发送短信"></a>2. 接收和发送短信</h2><h3 id="2-1-接收短信"><a href="#2-1-接收短信" class="headerlink" title="2.1 接收短信"></a>2.1 接收短信</h3><p>当手机接收到一条短信后，系统会发出值为<code>android.provider.Telephony.SMS_RECEIVED</code>的广播<br>完整案例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> TextView send;</div><div class="line">    <span class="keyword">private</span> TextView content;</div><div class="line">    <span class="keyword">private</span> IntentFilter receiveFilter;</div><div class="line">    <span class="keyword">private</span> MessageReceiver messageReceiver;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.main);</div><div class="line">        send = (TextView) findViewById(R.id.send);</div><div class="line">        content = (TextView) findViewById(R.id.content);</div><div class="line">        receiveFilter = <span class="keyword">new</span> IntentFilter();</div><div class="line">        receiveFilter.addAction(<span class="string">"android.provider.Telephony.SMS_RECEIVED"</span>);</div><div class="line">        messageReceiver = <span class="keyword">new</span> MessageReceiver();</div><div class="line">        <span class="comment">//注册</span></div><div class="line">        registerReceiver(messageReceiver, receiveFilter);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        <span class="comment">//取消注册</span></div><div class="line">        unregisterReceiver(messageReceiver);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MessageReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</div><div class="line"></div><div class="line">            <span class="comment">//从Intent参数中取得Bundle对象</span></div><div class="line">            Bundle bundle = intent.getExtras();</div><div class="line">            <span class="comment">//提取短信消息（每一个 pdu 都表示一条短信消息）</span></div><div class="line">           <span class="comment">// 使用 pdu 密钥来提取一个 SMS pdus 数组</span></div><div class="line">            Object[] pdus = (Object[]) bundle.get(<span class="string">"pdus"</span>);</div><div class="line">           <span class="comment">// 使用 SmsMessage 的 createFromPdu()方法将每一个 pdu 字节数组转换为 SmsMessage 对象</span></div><div class="line">            SmsMessage[] messages = <span class="keyword">new</span> SmsMessage[pdus.length];</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;messages.length; i++)&#123;</div><div class="line">                    messages[i] = SmsMessage.createFromPdu((<span class="keyword">byte</span>[]) pdus[i]);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">//获取到短信的发送方号码</span></div><div class="line">            String address = messages[<span class="number">0</span>].getOriginatingAddress();</div><div class="line"></div><div class="line">            String fullMessage = <span class="string">""</span>;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(SmsMessage message : messages)&#123;</div><div class="line">                <span class="comment">//获取短信内容</span></div><div class="line">                fullMessage += message.getMessageBody();</div><div class="line">            &#125;</div><div class="line">            send.setText(address);</div><div class="line">            content.setText(fullMessage);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>布局文件：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">              <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></div><div class="line">              <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></div><div class="line">              <span class="attr">android:layout_height</span>=<span class="string">"fill_parent"</span></div><div class="line">&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">            <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"50dp"</span>&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:text</span>=<span class="string">"From："</span></div><div class="line">                <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical"</span></div><div class="line">                <span class="attr">android:padding</span>=<span class="string">"10dp"</span></div><div class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/textView"</span>/&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line"></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/send"</span> <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical"</span>/&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">            <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"50dp"</span>&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:text</span>=<span class="string">"Content："</span></div><div class="line">                <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical"</span></div><div class="line">                <span class="attr">android:padding</span>=<span class="string">"10dp"</span></div><div class="line">              /&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line"></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/content"</span> <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical"</span>/&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>权限设置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">          <span class="attr">package</span>=<span class="string">"com.example.MSM_Test"</span></div><div class="line">          <span class="attr">android:versionCode</span>=<span class="string">"1"</span></div><div class="line">          <span class="attr">android:versionName</span>=<span class="string">"1.0"</span>&gt;</div><div class="line">    ...</div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.RECEIVE_SMS"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="2-2-拦截短信"><a href="#2-2-拦截短信" class="headerlink" title="2.2 拦截短信"></a>2.2 拦截短信</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">    ……</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        ……</div><div class="line">        receiveFilter = <span class="keyword">new</span> IntentFilter();</div><div class="line">        receiveFilter.addAction(<span class="string">"android.provider.Telephony.SMS_RECEIVED"</span>);</div><div class="line">         <span class="comment">//设置优先级</span></div><div class="line">        receiveFilter.setPriority(<span class="number">100</span>);</div><div class="line">        messageReceiver = <span class="keyword">new</span> MessageReceiver();</div><div class="line">        registerReceiver(messageReceiver, receiveFilter);</div><div class="line">    &#125;</div><div class="line">    ……</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MessageReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</div><div class="line">            ……</div><div class="line">            <span class="comment">//终止广播的继续传递</span></div><div class="line">            abortBroadcast();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在重新运行程序，再向模拟器发送一条短信，这时只有我们自己的程序才能收到这条<br>信了。按下 Back 键将程序关闭后，系统的短信程序又会重新拥有接收短信的功能。</p>
+<p><strong>Note:</strong>这个功能需慎用，随意拦截短信有可能会造成重要数据的丢。</p>
+<h3 id="2-3-发送短信"><a href="#2-3-发送短信" class="headerlink" title="2.3 发送短信"></a>2.3 发送短信</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> TextView send;</div><div class="line">    <span class="keyword">private</span> TextView content;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Button sender;</div><div class="line">    <span class="keyword">private</span> EditText to;</div><div class="line">    <span class="keyword">private</span> EditText msgCon;</div><div class="line">    <span class="keyword">private</span> IntentFilter receiveFilter;</div><div class="line">    <span class="keyword">private</span> MessageReceiver messageReceiver;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> IntentFilter sendFilter;</div><div class="line">    <span class="keyword">private</span> SendStatusReceiver sendStatusReceiver;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.main);</div><div class="line">        send = (TextView) findViewById(R.id.send);</div><div class="line">        content = (TextView) findViewById(R.id.content);</div><div class="line"></div><div class="line">        <span class="comment">//发送短信</span></div><div class="line"></div><div class="line">        to = (EditText) findViewById(R.id.to);</div><div class="line">        msgCon = (EditText) findViewById(R.id.msg_input);</div><div class="line">        sender = (Button) findViewById(R.id.sender);</div><div class="line"></div><div class="line">        sendFilter = <span class="keyword">new</span> IntentFilter();</div><div class="line">        sendFilter.addAction(<span class="string">"SENT_SMS_ACTION"</span>);</div><div class="line">        sendStatusReceiver = <span class="keyword">new</span> SendStatusReceiver();</div><div class="line">        registerReceiver(sendStatusReceiver, sendFilter);</div><div class="line"></div><div class="line">        sender.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                <span class="comment">//获取到 SmsManager 的实例</span></div><div class="line">                SmsManager smsManager = SmsManager.getDefault();</div><div class="line">                <span class="comment">//创建Intent对象（用于监听是否发送成功）</span></div><div class="line">                Intent sentIntent = <span class="keyword">new</span> Intent(<span class="string">"SENT_SMS_ACTION"</span>);</div><div class="line">                PendingIntent pi = PendingIntent.getBroadcast(MyActivity.<span class="keyword">this</span>, <span class="number">0</span>, sentIntent, <span class="number">0</span>);</div><div class="line">                <span class="comment">//调用它的 sendTextMessage()方法发送短信</span></div><div class="line">                smsManager.sendTextMessage(to.getText().toString(), <span class="keyword">null</span>, msgCon.getText().toString(), pi, <span class="keyword">null</span>);</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="comment">//发送短信 end</span></div><div class="line"></div><div class="line">        receiveFilter = <span class="keyword">new</span> IntentFilter();</div><div class="line">        receiveFilter.addAction(<span class="string">"android.provider.Telephony.SMS_RECEIVED"</span>);</div><div class="line">        <span class="comment">//设置优先级</span></div><div class="line">        receiveFilter.setPriority(<span class="number">100</span>);</div><div class="line">        messageReceiver = <span class="keyword">new</span> MessageReceiver();</div><div class="line">        <span class="comment">//注册</span></div><div class="line">        registerReceiver(messageReceiver, receiveFilter);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        <span class="comment">//取消注册</span></div><div class="line">        unregisterReceiver(messageReceiver);</div><div class="line"></div><div class="line">        unregisterReceiver(sendStatusReceiver);</div><div class="line">    &#125;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">SendStatusReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span> (getResultCode() == RESULT_OK) &#123;</div><div class="line">                <span class="comment">// 短信发送成功</span></div><div class="line">                Toast.makeText(context, <span class="string">"Send succeeded"</span>, Toast.LENGTH_LONG).show();</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="comment">// 短信发送失败</span></div><div class="line">                Toast.makeText(context, <span class="string">"Send failed"</span>, Toast.LENGTH_LONG).show();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MessageReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</div><div class="line"></div><div class="line">            <span class="comment">//从Intent参数中取得Bundle对象</span></div><div class="line">            Bundle bundle = intent.getExtras();</div><div class="line">            <span class="comment">//提取短信消息（每一个 pdu 都表示一条短信消息）</span></div><div class="line">           <span class="comment">// 使用 pdu 密钥来提取一个 SMS pdus 数组</span></div><div class="line">            Object[] pdus = (Object[]) bundle.get(<span class="string">"pdus"</span>);</div><div class="line">           <span class="comment">// 使用 SmsMessage 的 createFromPdu()方法将每一个 pdu 字节数组转换为 SmsMessage 对象</span></div><div class="line">            SmsMessage[] messages = <span class="keyword">new</span> SmsMessage[pdus.length];</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;messages.length; i++)&#123;</div><div class="line">                    messages[i] = SmsMessage.createFromPdu((<span class="keyword">byte</span>[]) pdus[i]);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">//获取到短信的发送方号码</span></div><div class="line">            String address = messages[<span class="number">0</span>].getOriginatingAddress();</div><div class="line"></div><div class="line">            String fullMessage = <span class="string">""</span>;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(SmsMessage message : messages)&#123;</div><div class="line">                <span class="comment">//获取短信内容</span></div><div class="line">                fullMessage += message.getMessageBody();</div><div class="line">            &#125;</div><div class="line">            send.setText(address);</div><div class="line">            content.setText(fullMessage);</div><div class="line">            <span class="comment">//终止广播的继续传递</span></div><div class="line">            abortBroadcast();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-调用摄像头和相册"><a href="#3-调用摄像头和相册" class="headerlink" title="3. 调用摄像头和相册"></a>3. 调用摄像头和相册</h2><h3 id="3-1-将程序运行到手机上"><a href="#3-1-将程序运行到手机上" class="headerlink" title="3.1 将程序运行到手机上"></a>3.1 将程序运行到手机上</h3><p>即真机测试。</p>
+<h3 id="3-2-调用摄像头拍照"><a href="#3-2-调用摄像头拍照" class="headerlink" title="3.2 调用摄像头拍照"></a>3.2 调用摄像头拍照</h3><p>步骤：</p>
+<p><strong>拍照：</strong></p>
+<ul>
+<li>创建File对象，用于存储拍照后的图片</li>
+<li>将file对象转换成Uri对象</li>
+<li>使用Intent调用相机</li>
+<li>启动相机程序</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TAKE_PHOTO = <span class="number">1</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CROP_PHOTO = <span class="number">2</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Button take_photo;</div><div class="line">    <span class="keyword">private</span> ImageView pic;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Uri imageUri;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.main);</div><div class="line">        take_photo = (Button) findViewById(R.id.take_photo);</div><div class="line">        pic = (ImageView) findViewById(R.id.picture);</div><div class="line">        take_photo.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                <span class="comment">// 创建File对象，用于存储拍照后的图片（Environment.getExternalStorageDirectory()获取手机的根目录）</span></div><div class="line">                File outputImage = <span class="keyword">new</span> File(Environment.</div><div class="line">                        getExternalStorageDirectory(), <span class="string">"tempImage.jpg"</span>);</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    <span class="keyword">if</span> (outputImage.exists()) &#123;</div><div class="line">                        outputImage.delete();</div><div class="line">                    &#125;</div><div class="line">                    outputImage.createNewFile();</div><div class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">                <span class="comment">//将file对象转换成Uri对象image_capture</span></div><div class="line">                imageUri = Uri.fromFile(outputImage);</div><div class="line">                Intent intent = <span class="keyword">new</span> Intent(<span class="string">"android.media.action.IMAGE_CAPTURE"</span>);</div><div class="line">                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);</div><div class="line">                <span class="comment">// 启动相机程序（拍完照后会有结果返回到onActivityResult()中去）</span></div><div class="line">                startActivityForResult(intent, TAKE_PHOTO);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (requestCode)&#123;</div><div class="line">            <span class="keyword">case</span> TAKE_PHOTO:</div><div class="line">                <span class="comment">//拍照成功</span></div><div class="line">                <span class="keyword">if</span> (resultCode == RESULT_OK)&#123;</div><div class="line">                    <span class="comment">//对照片进行裁剪</span></div><div class="line">                    Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.android.camera.action.CROP"</span>);</div><div class="line">                    intent.setDataAndType(imageUri, <span class="string">"image/*"</span>);</div><div class="line">                    intent.putExtra(<span class="string">"scale"</span>, <span class="keyword">true</span>);</div><div class="line">                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);</div><div class="line">                    <span class="comment">// 启动裁剪程序</span></div><div class="line">                    startActivityForResult(intent, CROP_PHOTO);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> CROP_PHOTO:</div><div class="line">                <span class="comment">//裁剪成功</span></div><div class="line">                <span class="keyword">if</span> (resultCode == RESULT_OK)&#123;</div><div class="line">                    <span class="keyword">try</span> &#123;</div><div class="line">                        <span class="comment">//将图片解析成Bitmap对象</span></div><div class="line">                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));</div><div class="line">                        pic.setImageBitmap(bitmap);</div><div class="line">                    &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-3-从相册中选择照片"><a href="#3-3-从相册中选择照片" class="headerlink" title="3.3 从相册中选择照片"></a>3.3 从相册中选择照片</h3><p>步骤：</p>
+<ul>
+<li>创建File对象，用于存储选择的照片</li>
+<li>将file对象转换成Uri对象</li>
+<li>构建Intent并指定action，设置必须的参数</li>
+<li>打开相册程序</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">chooseFromAlbum.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        <span class="comment">//创建File对象，用于存储选择的照片</span></div><div class="line">        File file = <span class="keyword">new</span> File(Environment.getExternalStorageDirectory(), <span class="string">"out.jpg"</span>);</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span>(file.exists())&#123;</div><div class="line">            file.delete();</div><div class="line">        &#125;</div><div class="line">            file.createNewFile();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//将file对象转换成Uri对象</span></div><div class="line">        imageUri = Uri.fromFile(file);</div><div class="line">        <span class="comment">//构建Intent并指定action</span></div><div class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="string">"android.intent.action.GET_CONTENT"</span>);</div><div class="line">        intent.setType(<span class="string">"image/*"</span>);</div><div class="line">        <span class="comment">//是否允许裁剪</span></div><div class="line">        intent.putExtra(<span class="string">"crop"</span>, <span class="keyword">true</span>);</div><div class="line">        <span class="comment">//是否允许缩放</span></div><div class="line">        intent.putExtra(<span class="string">"scale"</span>, <span class="keyword">true</span>);</div><div class="line">        <span class="comment">//图片的位置</span></div><div class="line">        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);</div><div class="line">        <span class="comment">//打开相册程序</span></div><div class="line">        startActivityForResult(intent, CROP_PHOTO);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="4-播放多媒体文件"><a href="#4-播放多媒体文件" class="headerlink" title="4. 播放多媒体文件"></a>4. 播放多媒体文件</h2><h3 id="4-1-播放音频"><a href="#4-1-播放音频" class="headerlink" title="4.1 播放音频"></a>4.1 播放音频</h3><p>音乐播放一般都使用<code>MediaPlayer</code>类，下面列出了<code>MediaPlayer</code>类一些常用的方法：<br>|方法名|功能描述|<br>|—-|—|<br>|setDataSource()|设置要播放的音频文件的位置|<br>|prepare()|开始播放之前调用这个方法完成准备工作|<br>|start()|开始或继续播放音频|<br>|pause()|暂停播放音频|<br>|reset()|将 MediaPlayer 对象重置到刚刚创建的状态|<br>|seekTo()|从停止的位置开始播放音频|<br>|stop()|停止播放音频，调用这个方法后MediaPlayer对象无法再播放音频|<br>|release()|释放掉与MediaPlayer对象相关的资源|<br>|isPlaying()|判断当前 MediaPlayer 是否正在播放音频|<br>|getDuration()|获取载入的音频文件的时长|</p>
+<p><strong>步骤：</strong></p>
+<ul>
+<li>创建MediaPlayer 对象</li>
+<li>调用setDataSource()方法来设置音频文件的路径</li>
+<li>再调用prepare()方法准备</li>
+<li>start()方法开始播放</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> Button play;</div><div class="line">    <span class="keyword">private</span> Button pause;</div><div class="line">    <span class="keyword">private</span> Button stop;</div><div class="line">    <span class="comment">//创建mediaPlayer实例</span></div><div class="line">    <span class="keyword">private</span> MediaPlayer mediaPlayer = <span class="keyword">new</span> MediaPlayer();</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.main);</div><div class="line">        findViews();</div><div class="line">        initEvent();</div><div class="line">        <span class="comment">//初始化播放器</span></div><div class="line">        initMediaPlayer();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initMediaPlayer</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">//创建文件对象</span></div><div class="line">            File file = <span class="keyword">new</span> File(Environment.getExternalStorageDirectory(),</div><div class="line">                <span class="string">"music.mp3"</span>);</div><div class="line">                <span class="comment">//设置文件的源</span></div><div class="line">            mediaPlayer.setDataSource(file.getPath());</div><div class="line">            <span class="comment">//准备</span></div><div class="line">            mediaPlayer.prepare();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initEvent</span><span class="params">()</span> </span>&#123;</div><div class="line">        play.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        pause.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        stop.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">findViews</span><span class="params">()</span> </span>&#123;</div><div class="line">        play = (Button) findViewById(R.id.play);</div><div class="line">        pause = (Button) findViewById(R.id.pause);</div><div class="line">        stop = (Button) findViewById(R.id.stop);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (v.getId())&#123;</div><div class="line">            <span class="keyword">case</span> R.id.play:</div><div class="line">            <span class="comment">//播放</span></div><div class="line">                <span class="keyword">if</span>(!mediaPlayer.isPlaying())&#123;</div><div class="line">                    mediaPlayer.start();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.pause:</div><div class="line">            <span class="comment">//暂停</span></div><div class="line">                <span class="keyword">if</span>(mediaPlayer.isPlaying())&#123;</div><div class="line">                    mediaPlayer.pause();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.stop:</div><div class="line">            <span class="comment">//停止</span></div><div class="line">                <span class="keyword">if</span>(mediaPlayer.isPlaying())&#123;</div><div class="line">                    mediaPlayer.reset();</div><div class="line">                    initMediaPlayer();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        <span class="keyword">if</span>(mediaPlayer != <span class="keyword">null</span>)&#123;</div><div class="line">        <span class="comment">//停止播放音频</span></div><div class="line">            mediaPlayer.stop();</div><div class="line">            <span class="comment">//释放掉与MediaPlayer对象相关的资源</span></div><div class="line">            mediaPlayer.release();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="4-2-播放视频"><a href="#4-2-播放视频" class="headerlink" title="4.2 播放视频"></a>4.2 播放视频</h3><p>视频播放一般都使用<code>VideoView</code>类，下面列出了<code>VideoView</code>类一些常用的方法：<br>|方法名|功能描述|<br>|—-|—|<br>|setVideoPath()|设置要播放视频文件的位置|<br>|start()|开始或继续播放视频|<br>|pause()|暂停播放视频|<br>|resume()|将视频重头开始播放|<br>|seekTo()|从指定的位置开始播放视频|<br>|isPlaying()|判断当前是否正在播放视频|<br>|getDuration()|获取载入的视频文件的时长|</p>
+<p>使用的方法与””类似：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> VideoView videoView;</div><div class="line">    <span class="keyword">private</span> Button play;</div><div class="line">    <span class="keyword">private</span> Button pause;</div><div class="line">    <span class="keyword">private</span> Button replay;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.main);</div><div class="line">        findViews();</div><div class="line">        initEvent();</div><div class="line">        initVideo();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initVideo</span><span class="params">()</span> </span>&#123;</div><div class="line">        File file = <span class="keyword">new</span> File(Environment.getExternalStorageDirectory(), <span class="string">"m.mp4"</span>);</div><div class="line">        videoView.setVideoPath(file.getPath());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initEvent</span><span class="params">()</span> </span>&#123;</div><div class="line">        play.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        pause.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        replay.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">findViews</span><span class="params">()</span> </span>&#123;</div><div class="line">        videoView = (VideoView) findViewById(R.id.video_view);</div><div class="line">        play = (Button) findViewById(R.id.play);</div><div class="line">        pause = (Button) findViewById(R.id.pause);</div><div class="line">        replay = (Button) findViewById(R.id.replay);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (v.getId())&#123;</div><div class="line">            <span class="keyword">case</span>  R.id.play:</div><div class="line">                <span class="keyword">if</span>(!videoView.isPlaying())&#123;</div><div class="line">                    videoView.start(); <span class="comment">//开始播放</span></div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.pause:</div><div class="line">                <span class="keyword">if</span>(videoView.isPlaying())&#123;</div><div class="line">                    videoView.pause(); <span class="comment">//暂停</span></div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.replay:</div><div class="line">                <span class="keyword">if</span>(videoView.isPlaying())&#123;</div><div class="line">                    videoView.resume(); <span class="comment">//重播</span></div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        <span class="keyword">if</span>(videoView != <span class="keyword">null</span>)&#123;</div><div class="line">            videoView.suspend();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>main.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"fill_parent"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">VideoView</span></span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/video_view"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> &gt;</div><div class="line">        <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/play"</span></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">                <span class="attr">android:text</span>=<span class="string">"Play"</span> /&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/pause"</span></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">                <span class="attr">android:text</span>=<span class="string">"Pause"</span> /&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/replay"</span></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">                <span class="attr">android:text</span>=<span class="string">"Replay"</span> /&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+</excerpt>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/多媒体/" rel="tag"># 多媒体</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/12/ContentProvider/" rel="next" title="ContentProvider">
+                <i class="fa fa-chevron-left"></i> ContentProvider
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/02/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/16/手机多媒体/"
+           data-title="手机多媒体" data-url="openexw.github.io/2016/07/16/手机多媒体/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Openoter" />
+          <p class="site-author-name" itemprop="name">Openoter</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用通知（Notification）"><span class="nav-number">1.</span> <span class="nav-text">1. 使用通知（Notification）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-通知的基本用法"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 通知的基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-通知的高级技巧"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 通知的高级技巧</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-接收和发送短信"><span class="nav-number">2.</span> <span class="nav-text">2. 接收和发送短信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-接收短信"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 接收短信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-拦截短信"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 拦截短信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-发送短信"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 发送短信</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-调用摄像头和相册"><span class="nav-number">3.</span> <span class="nav-text">3. 调用摄像头和相册</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-将程序运行到手机上"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 将程序运行到手机上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-调用摄像头拍照"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 调用摄像头拍照</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-从相册中选择照片"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 从相册中选择照片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-播放多媒体文件"><span class="nav-number">4.</span> <span class="nav-text">4. 播放多媒体文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-播放音频"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 播放音频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-播放视频"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 播放视频</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Openoter</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"openoter"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("4yBJ2Rhasby0Upv2IyRBIVoL-gzGzoHsz", "1PbbYpUV9yyYNVg3dxqKeACK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
