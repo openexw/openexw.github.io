@@ -1,0 +1,1031 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="php,linux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="LAMP/LNMP环境搭建LAMP分别代表Linux、Apache、MySQL、PHP。LNMP分别代表Linux、Nginx、MuSQL、PHP。
+编译安装：Linux安装软件时的重要方式之一。将下载的软件源代码进行编译，然后安装。
+
+编译前的准备工作：
+
+1./configure
+
+编译：
+
+1make
+
+安装：
+
+1make install">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LAMP/LNMP环境搭建">
+<meta property="og:url" content="openexw.github.io/2017/03/25/LNMP环境搭建/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="LAMP/LNMP环境搭建LAMP分别代表Linux、Apache、MySQL、PHP。LNMP分别代表Linux、Nginx、MuSQL、PHP。
+编译安装：Linux安装软件时的重要方式之一。将下载的软件源代码进行编译，然后安装。
+
+编译前的准备工作：
+
+1./configure
+
+编译：
+
+1make
+
+安装：
+
+1make install">
+<meta property="og:image" content="http://7xskyl.com1.z0.glb.clouddn.com/linux-1.png">
+<meta property="og:image" content="http://7xskyl.com1.z0.glb.clouddn.com/linux-2.png">
+<meta property="og:image" content="http://7xskyl.com1.z0.glb.clouddn.com/linux-3.png">
+<meta property="og:updated_time" content="2017-03-25T14:38:25.043Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LAMP/LNMP环境搭建">
+<meta name="twitter:description" content="LAMP/LNMP环境搭建LAMP分别代表Linux、Apache、MySQL、PHP。LNMP分别代表Linux、Nginx、MuSQL、PHP。
+编译安装：Linux安装软件时的重要方式之一。将下载的软件源代码进行编译，然后安装。
+
+编译前的准备工作：
+
+1./configure
+
+编译：
+
+1make
+
+安装：
+
+1make install">
+<meta name="twitter:image" content="http://7xskyl.com1.z0.glb.clouddn.com/linux-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="openexw.github.io/2017/03/25/LNMP环境搭建/"/>
+
+
+
+
+
+  <title> LAMP/LNMP环境搭建 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="openexw.github.io/2017/03/25/LNMP环境搭建/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Openoter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                LAMP/LNMP环境搭建
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T22:38:25+08:00">
+                2017-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/php/" itemprop="url" rel="index">
+                    <span itemprop="name">php</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/25/LNMP环境搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/25/LNMP环境搭建/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/25/LNMP环境搭建/" class="leancloud_visitors" data-flag-title="LAMP/LNMP环境搭建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="LAMP-LNMP环境搭建"><a href="#LAMP-LNMP环境搭建" class="headerlink" title="LAMP/LNMP环境搭建"></a>LAMP/LNMP环境搭建</h1><p>LAMP分别代表Linux、Apache、MySQL、PHP。<br>LNMP分别代表Linux、Nginx、MuSQL、PHP。</p>
+<p><strong>编译安装</strong>：Linux安装软件时的重要方式之一。<br>将下载的软件源代码进行编译，然后安装。</p>
+<ul>
+<li>编译前的准备工作：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure</div></pre></td></tr></table></figure>
+<ul>
+<li>编译：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make</div></pre></td></tr></table></figure>
+<ul>
+<li>安装：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make install</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><strong>源安装</strong>：比如在<code>CentOS</code>中的<code>yum</code>。</p>
+<h1 id="安装Linux"><a href="#安装Linux" class="headerlink" title="安装Linux"></a>安装Linux</h1><p>在这里我们使用<code>virtualbox</code>这个虚拟机来安装<code>Linux</code>。</p>
+<h2 id="设置网卡"><a href="#设置网卡" class="headerlink" title="设置网卡"></a>设置网卡</h2><p> 在终端使用打开配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysconfig/network-scripts/ifcfg-enp0s3</div></pre></td></tr></table></figure>
+<p>按下 回车后会出现以下界面：</p>
+<p><img src="http://7xskyl.com1.z0.glb.clouddn.com/linux-1.png" alt="linux"></p>
+<p>注意：</p>
+<ul>
+<li>上面的<code>ONBOOT</code>选项修改成<code>yes</code>。</li>
+<li>设置<code>IP</code>为静态的：如下<br><img src="http://7xskyl.com1.z0.glb.clouddn.com/linux-2.png" alt="linux"><br>配置完成后重启启动服务：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemclt reatart network.service</div></pre></td></tr></table></figure>
+<p>然后我们来验证我们的<code>IP</code>是否设置成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ip addr</div></pre></td></tr></table></figure>
+<p><img src="http://7xskyl.com1.z0.glb.clouddn.com/linux-3.png" alt="linux"></p>
+<p>看到上面标红的区域，跟我们设置的<code>IPADDR</code>一样了，说明我们的<code>IP</code>配置成功了。</p>
+<p>现在我们就可以使用远程的机器来登录这台电脑了，不过在这之前得让防火墙运行远程的电脑登录。</p>
+<h3 id="开启防火墙"><a href="#开启防火墙" class="headerlink" title="开启防火墙"></a>开启防火墙</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo firewall-cmd --zone=public --add-port=22/tcp --permanent</div></pre></td></tr></table></figure>
+<p>提示<code>success</code>就说明已经打开成功。但这仍然不够，还需要重启防火墙：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemclt restart firewalld.service</div></pre></td></tr></table></figure>
+<h1 id="安装PHP"><a href="#安装PHP" class="headerlink" title="安装PHP"></a>安装PHP</h1><p>使用<code>wget</code>安装php（若没有安装<code>wget</code>，使用<code>sudo yum install wget</code>安装）：</p>
+<h2 id="1-下载php"><a href="#1-下载php" class="headerlink" title="1.  下载php"></a>1.  下载<code>php</code></h2><p>我们可以在<code>php</code>的官网找到php的下载路径，然后使用<code>wget</code>命令下载<code>php</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://hk1.php.net/get/php-7.1.3.tar.gz/from/this/mirror</div></pre></td></tr></table></figure>
+<h2 id="2-解压下载好的mirror"><a href="#2-解压下载好的mirror" class="headerlink" title="2. 解压下载好的mirror"></a>2. 解压下载好的<code>mirror</code></h2><p>使用<code>tar</code>命令来解压我们的<code>mirror</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf mirror</div></pre></td></tr></table></figure>
+<h2 id="3-安装gcc、gcc-、libxml2-devel"><a href="#3-安装gcc、gcc-、libxml2-devel" class="headerlink" title="3. 安装gcc、gcc++、libxml2-devel"></a>3. 安装<code>gcc</code>、<code>gcc++</code>、<code>libxml2-devel</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install gcc gcc++ libxml2-devel</div></pre></td></tr></table></figure>
+<h2 id="4-配置-configure"><a href="#4-配置-configure" class="headerlink" title="4. 配置./configure"></a>4. 配置<code>./configure</code></h2><p> 我们需要进入<code>php</code>的解压目录，并进行配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd php-7.1.3</div><div class="line">./confgure --prefix=/usr/local/php7 --enable--fpm</div></pre></td></tr></table></figure>
+<h2 id="5-编译"><a href="#5-编译" class="headerlink" title="5. 编译"></a>5. 编译</h2><p>使用<code>make</code>命令进行编译：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make</div></pre></td></tr></table></figure>
+<h2 id="6-安装php"><a href="#6-安装php" class="headerlink" title="6. 安装php"></a>6. 安装php</h2><p>编译完成后，我么使用<code>make install</code>来进行安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo make install</div></pre></td></tr></table></figure>
+<h2 id="7-测试安装是否成功"><a href="#7-测试安装是否成功" class="headerlink" title="7. 测试安装是否成功"></a>7. 测试安装是否成功</h2><p>现在我们安装完成了，但是我们的测试是否安装成功：</p>
+<p><strong>进入自己的home目录：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd ~</div></pre></td></tr></table></figure>
+<p><strong>新建一个test.php</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">phpinfo()</div></pre></td></tr></table></figure>
+<p><strong>运行<code>/usr/local/php7/bin/php test.php</code></strong><br>如果运行成功了，会返回php的配置信息。</p>
+<p>这样<code>php</code>就已经安装完成了。</p>
+<h1 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h1><p>使用<code>rpm</code>安装<code>mysql 5.7.*</code></p>
+<h2 id="1-配置yum源"><a href="#1-配置yum源" class="headerlink" title="1. 配置yum源"></a>1. 配置<code>yum</code>源</h2><p>在<code>MySQL</code>官网下载YUM源rpm安装包：<a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="external">http://dev.mysql.com/downloads/repo/yum/</a> </p>
+<p>选择指定的版本后，点击<code>Download</code>，复制下载的路径</p>
+<p>然后在终端执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://dev.mysql.com/get/mysql57-community-release-el6-9.noarch.rpm</div></pre></td></tr></table></figure>
+<h2 id="2-使用yum安装mysql源"><a href="#2-使用yum安装mysql源" class="headerlink" title="2. 使用yum安装mysql源"></a>2. 使用<code>yum</code>安装<code>mysql源</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum localinstall mysql57-community-release-el7-9.noarch.rpm</div></pre></td></tr></table></figure>
+<p><strong>检查<code>mysql源</code>是否安装成功</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum repolist enabled | grep &quot;mysql.*-community.*&quot;</div></pre></td></tr></table></figure></p>
+<p>运行上面的命令之后，会出现以下的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[openoter@localhost ~]$ yum repolist enabled | grep &quot;mysql.*-community.*&quot;</div><div class="line">mysql-connectors-community/x86_64        MySQL Connectors Community           30</div><div class="line">mysql-tools-community/x86_64             MySQL Tools Community                43</div><div class="line">mysql57-community/x86_64                 MySQL 5.7 Community Server          166</div></pre></td></tr></table></figure>
+<p>出现类似上面的内容，说明<code>mysql</code>已经安装成功。</p>
+<h2 id="3-安装mysql"><a href="#3-安装mysql" class="headerlink" title="3. 安装mysql"></a>3. 安装<code>mysql</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install mysql-community-server</div></pre></td></tr></table></figure>
+<h2 id="4-启动mysql"><a href="#4-启动mysql" class="headerlink" title="4. 启动mysql"></a>4. 启动<code>mysql</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start mysqld</div></pre></td></tr></table></figure>
+<p><strong>查看mysql的启动状态</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl status mysqld</div></pre></td></tr></table></figure>
+<p>运行完成后，会出现以下的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">● mysqld.service - MySQL Server</div><div class="line">   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)</div><div class="line">   Active: active (running) since 六 2017-03-25 16:51:46 CST; 13s ago</div><div class="line">     Docs: man:mysqld(8)</div><div class="line">           http://dev.mysql.com/doc/refman/en/using-systemd.html</div><div class="line">  Process: 2885 ExecStart=/usr/sbin/mysqld --daemonize --pid-file=/var/run/mysqld/mysqld.pid $MYSQLD_OPTS (code=exited, status=0/SUCCESS)</div><div class="line">  Process: 2811 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)</div><div class="line"> Main PID: 2888 (mysqld)</div><div class="line">   CGroup: /system.slice/mysqld.service</div><div class="line">           └─2888 /usr/sbin/mysqld --daemonize --pid-file=/var/run/mysqld/mysqld.pid</div></pre></td></tr></table></figure></p>
+<p>如果结果包含<code>Active: active (running)</code>，说明<code>mysql</code>启动成功了。</p>
+<h2 id="5-开机启动"><a href="#5-开机启动" class="headerlink" title="5. 开机启动"></a>5. 开机启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo systemctl enable mysqld</div><div class="line">sudo systemctl daemon-reload</div></pre></td></tr></table></figure>
+<h2 id="6-修改root默认密码"><a href="#6-修改root默认密码" class="headerlink" title="6. 修改root默认密码"></a>6. 修改<code>root</code>默认密码</h2><p>mysql安装完成之后，在<code>/var/log/mysqld.log</code>文件中给root生成了一个默认密码。通过下面的方式找到<code>root</code>默认密码，然后登录<code>mysql</code>进行修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep &apos;temporary password&apos; /var/log/mysqld.log</div></pre></td></tr></table></figure>
+<p>运行完上面的代码，会出现以下的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2017-03-25T08:51:37.548507Z 1 [Note] A temporary password is generated for root@localhost: g+r*gXri_5up</div></pre></td></tr></table></figure>
+<p>结果中的<code>g+r*gXri_5up</code>就是mysql的临时密码：</p>
+<h3 id="登录mysql，修改密码"><a href="#登录mysql，修改密码" class="headerlink" title="登录mysql，修改密码"></a><strong>登录mysql，修改密码</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p</div><div class="line">mysql&gt; ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;MyNewPass4!&apos;;</div></pre></td></tr></table></figure>
+<p><em>注意</em>：mysql5.7默认安装了密码安全检查插件（<code>validate_password</code>），默认密码检查策略要求密码必须包含：</p>
+<ul>
+<li>大小写字母、数字和特殊符号</li>
+<li>且长度不能少于8位</li>
+</ul>
+<p>否则会报以下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</div></pre></td></tr></table></figure>
+<h3 id="密码策略"><a href="#密码策略" class="headerlink" title="密码策略"></a><strong>密码策略</strong></h3><p>我们可以通过以下命令来查看密码策略相关的信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show variables like &apos;%password%&apos;;</div></pre></td></tr></table></figure>
+<p>上面的代码会出现以下的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">+---------------------------------------+--------+</div><div class="line">| Variable_name                         | Value  |</div><div class="line">+---------------------------------------+--------+</div><div class="line">| default_password_lifetime             | 0      |</div><div class="line">| disconnect_on_expired_password        | ON     |</div><div class="line">| log_builtin_as_identified_by_password | OFF    |</div><div class="line">| mysql_native_password_proxy_users     | OFF    |</div><div class="line">| old_passwords                         | 0      |</div><div class="line">| report_password                       |        |</div><div class="line">| sha256_password_proxy_users           | OFF    |</div><div class="line">| validate_password_check_user_name     | OFF    |</div><div class="line">| validate_password_dictionary_file     |        |</div><div class="line">| validate_password_length              | 8      |</div><div class="line">| validate_password_mixed_case_count    | 1      |</div><div class="line">| validate_password_number_count        | 1      |</div><div class="line">| validate_password_policy              | MEDIUM |</div><div class="line">| validate_password_special_char_count  | 1      |</div><div class="line">+---------------------------------------+--------+</div></pre></td></tr></table></figure>
+<ul>
+<li><code>validate_password_policy</code> : 密码策略，默认为MEDIUM策略 </li>
+<li><code>validate_password_dictionary_file</code>: 密码策略文件，策略为<code>STRONG</code>才需要</li>
+<li><code>validate_password_length</code>：密码最少长度  </li>
+<li><code>validate_password_mixed_case_count</code> ： 大小写字符长度，至少1个 </li>
+<li><code>validate_password_number_count</code>：数字至少1个 </li>
+<li><code>validate_password_special_char_count</code>：特殊字符至少1个</li>
+</ul>
+<p>这就是默认的策略<code>MEDIUM策略</code>的密码检查规则。</p>
+<p>关于密码策略请查看mysql官网：<a href="http://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html#sysvar_validate_password_policy" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html#sysvar_validate_password_policy</a></p>
+<h4 id="修改密码策略"><a href="#修改密码策略" class="headerlink" title="修改密码策略"></a>修改密码策略</h4><p>在<code>/etc/my.cnf</code>文件添加<code>validate_password_policy</code>配置，指定密码策略。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 选择0（LOW），1（MEDIUM），2（STRONG）其中一种，选择2需要提供密码字典文件</div><div class="line">validate_password_policy=0</div></pre></td></tr></table></figure>
+<p>如果不需要密码策略，添加my.cnf文件中添加如下配置禁用即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">validate_password = off</div></pre></td></tr></table></figure>
+<p>重新启动mysql服务使配置生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart mysqld</div></pre></td></tr></table></figure>
+<p>就这样，我们的<code>mysql</code>就已经安装完成了。</p>
+<h2 id="7-添加远程登录用户"><a href="#7-添加远程登录用户" class="headerlink" title="7. 添加远程登录用户"></a>7. 添加远程登录用户</h2><p>默认只允许root帐户在本地登录，如果要在其它机器上连接mysql，必须修改root允许远程连接，或者添加一个允许远程连接的帐户，为了安全起见，我添加一个新的帐户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &apos;openoter&apos;@&apos;%&apos; IDENTIFIED BY &apos;12345&apos; WITH GRANT OPTION;</div></pre></td></tr></table></figure>
+<h1 id="安装apache"><a href="#安装apache" class="headerlink" title="安装apache"></a>安装<code>apache</code></h1><h2 id="1-下载apche"><a href="#1-下载apche" class="headerlink" title="1. 下载apche"></a>1. 下载<code>apche</code></h2><p>首先我们来到<code>apache</code>的官网找到<code>http</code>下载的下载地址：<a href="https://mirrors.tuna.tsinghua.edu.cn/apache/httpd/" target="_blank" rel="external">https://mirrors.tuna.tsinghua.edu.cn/apache/httpd/</a></p>
+<p>我们在命令行中使用<code>wget</code>下载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://mirrors.tuna.tsinghua.edu.cn/apache/httpd/httpd-2.4.25.tar.gz</div></pre></td></tr></table></figure>
+<h2 id="2-解压httpd-2-4-25-tar-gz压缩包"><a href="#2-解压httpd-2-4-25-tar-gz压缩包" class="headerlink" title="2. 解压httpd-2.4.25.tar.gz压缩包"></a>2. 解压<code>httpd-2.4.25.tar.gz</code>压缩包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf httpd-2.4.25.tar.gz</div></pre></td></tr></table></figure>
+<p>解压完成后，在目录下面后多出<code>httpd-2.4.25</code>目录，使用<code>cd</code>命令进入里面。</p>
+<h2 id="3-安装依赖包pcre、apr、apr-util"><a href="#3-安装依赖包pcre、apr、apr-util" class="headerlink" title="3. 安装依赖包pcre、apr、apr-util"></a>3. 安装依赖包<code>pcre</code>、<code>apr</code>、<code>apr-util</code></h2><p>在<a href="http://apr.apache.org/download.cgi分别找到`apr`、`apr-util`的下载地址。" target="_blank" rel="external">http://apr.apache.org/download.cgi分别找到`apr`、`apr-util`的下载地址。</a></p>
+<p>在<code>http://www.pcre.org/</code>找到<code>pcre</code>的源代码路径。</p>
+<p>然后解压安装：</p>
+<p><strong>下载</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-1.5.2.tar.gz</div><div class="line">wget http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-util-1.5.4.tar.gz</div><div class="line">wget https://ftp.pcre.org/pub/pcre/pcre-8.40.tar.gz</div></pre></td></tr></table></figure></p>
+<p><strong>解压</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tar -zxvf apr-1.5.2.tar.gz</div><div class="line">tar -zxvf apr-util-1.5.4.tar.gz</div><div class="line">tar -zxvf pcre-8.40.tar.gz</div></pre></td></tr></table></figure>
+<p><strong>使用<code>mv</code>命名重名名</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mv apr-1.5.2 apr</div><div class="line">mv apr-util-1.5.4.tar.gz apr-util</div></pre></td></tr></table></figure>
+<p><strong>将<code>apr</code>、<code>apr-util</code>剪切到<code>httpd-2.4.25</code>目录</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv apr par-util httpd-2.4.25/srclib</div></pre></td></tr></table></figure>
+<p>这样<code>apr</code>见处理完成了。</p>
+<p><strong>安装pcre</strong></p>
+<p>进入到<code>pcre-8.40</code>目录，并进行<code>./configure</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd pcre-8.40</div><div class="line">./configure --prefix=/usr/local/pcre</div></pre></td></tr></table></figure>
+<p>编译并安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
+<h2 id="4-安装apche"><a href="#4-安装apche" class="headerlink" title="4. 安装apche"></a>4. 安装<code>apche</code></h2><p>进入<code>httpd-2.4.25</code>并进行安装。</p>
+<p><strong>配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd httpd-2.4.25</div><div class="line">./configure --prefix=/usr/local/apache2 -with-pcre=/usr/local/pcre-8.40/bin/pcre-config -with-include-apr</div></pre></td></tr></table></figure></p>
+<p><strong>编译并安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make</div><div class="line">sudo make instal</div></pre></td></tr></table></figure>
+<p>这样apache就安装好了。</p>
+<h2 id="5-启动apche"><a href="#5-启动apche" class="headerlink" title="5. 启动apche"></a>5. 启动<code>apche</code></h2><p>进入apche的安装目录，并启动<code>apche</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/apche2/bin</div><div class="line">sudo acpchectl -k start</div></pre></td></tr></table></figure>
+<p>现在在浏览器中输入<code>ip</code>地址是不能访问我们配置的，因为我们没有允许防火墙进行访问<code>80</code>端口。</p>
+<h2 id="6-开启防火墙"><a href="#6-开启防火墙" class="headerlink" title="6. 开启防火墙"></a>6. 开启防火墙</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo firewall-cmd --zone=public --add-port=80/tcp --permanent</div><div class="line">sudo systemctl restart firewalld.service</div></pre></td></tr></table></figure>
+<p>现在我们去浏览器访问就可以访问了。（通过ip地址）</p>
+<h1 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装<code>nginx</code></h1><h2 id="1-下载nginx"><a href="#1-下载nginx" class="headerlink" title="1. 下载nginx"></a>1. 下载<code>nginx</code></h2><p>我们打开<code>nginx.org</code>，找到下载的<code>nginx</code>链接：<a href="http://nginx.org/en/download.html" target="_blank" rel="external">http://nginx.org/en/download.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://nginx.org/download/nginx-1.10.3.tar.gz</div></pre></td></tr></table></figure>
+<h2 id="2-解压"><a href="#2-解压" class="headerlink" title="2. 解压"></a>2. 解压</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf nginx-1.10.3.tar.gz</div></pre></td></tr></table></figure>
+<h2 id="4-配置并安装"><a href="#4-配置并安装" class="headerlink" title="4. 配置并安装"></a>4. 配置并安装</h2><p>进入<code>nginx-1.10.3</code>目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd nginx-1.10.3</div><div class="line">./configure --prefix=/usr/local/nginx --with-pcre=../pcre-8.4</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+<p>这样<code>nginx</code>就安装成功了。</p>
+<h2 id="5-启动nginx"><a href="#5-启动nginx" class="headerlink" title="5. 启动nginx"></a>5. 启动<code>nginx</code></h2><p>我们进入到<code>nginx</code>的安装目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/nginx/sbin</div></pre></td></tr></table></figure>
+<p><strong>终止httpd的进程</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 查看http的启动情况，获取进程的id</div><div class="line">ps aux | grep httpd</div><div class="line">sudo kill -9 18728 18729</div></pre></td></tr></table></figure>
+<p><strong>启动nginx</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ./nginx</div></pre></td></tr></table></figure>
+<p>这样我们的<code>nginx</code>就启动了，然后我们在浏览器中输入你的ip地址来进行访问，如果能够出现<code>nginx</code>的欢迎界面，则拜师<code>nginx</code>已经启动成功了。</p>
+<h2 id="6-配置nginx"><a href="#6-配置nginx" class="headerlink" title="6. 配置nginx"></a>6. 配置<code>nginx</code></h2><p><strong>启动<code>php-fpm</code></strong><br>配置<code>nginx</code>之前，我们需要启动<code>php</code>中的<code>php-fpm</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/php7/etc</div><div class="line"># 重命名</div><div class="line">sudo mv php-fpm.conf.default php-fpm.conf</div><div class="line">cd php-fpm.d</div><div class="line">sudo mv www.conf.default www.conf</div><div class="line"></div><div class="line"># 进入/usr/local/php7/sbin，启动php-fpm</div><div class="line">cd /usr/local/php7/sbin</div><div class="line">sudo ./php-fpm</div></pre></td></tr></table></figure>
+<p><strong>配置<code>nginx</code></strong><br>我们打开配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/nginx</div><div class="line"></div><div class="line">sudo vim conf/nginx.conf</div></pre></td></tr></table></figure>
+<p>打开<code>localtion ~ \.php</code>的配置注释，并进行一些修改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">location ~ \.php$ &#123;</div><div class="line">	 root           html;</div><div class="line">     fastcgi_pass   127.0.0.1:9000;</div><div class="line">     fastcgi_index  index.php;</div><div class="line">     fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</div><div class="line">     include        fastcgi_params;</div><div class="line">     include fastcgi.conf;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后启动<code>nginx</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd sbin</div><div class="line">sudo ./nginx</div></pre></td></tr></table></figure>
+<p>然后我就可以在浏览器中输入ip地址后访问php文件了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/swiper/" rel="next" title="swiper">
+                <i class="fa fa-chevron-left"></i> swiper
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/25/LNMP环境搭建/"
+           data-title="LAMP/LNMP环境搭建" data-url="openexw.github.io/2017/03/25/LNMP环境搭建/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Openoter" />
+          <p class="site-author-name" itemprop="name">Openoter</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LAMP-LNMP环境搭建"><span class="nav-number">1.</span> <span class="nav-text">LAMP/LNMP环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Linux"><span class="nav-number">2.</span> <span class="nav-text">安装Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置网卡"><span class="nav-number">2.1.</span> <span class="nav-text">设置网卡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开启防火墙"><span class="nav-number">2.1.1.</span> <span class="nav-text">开启防火墙</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装PHP"><span class="nav-number">3.</span> <span class="nav-text">安装PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-下载php"><span class="nav-number">3.1.</span> <span class="nav-text">1.  下载php</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-解压下载好的mirror"><span class="nav-number">3.2.</span> <span class="nav-text">2. 解压下载好的mirror</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装gcc、gcc-、libxml2-devel"><span class="nav-number">3.3.</span> <span class="nav-text">3. 安装gcc、gcc++、libxml2-devel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-配置-configure"><span class="nav-number">3.4.</span> <span class="nav-text">4. 配置./configure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-编译"><span class="nav-number">3.5.</span> <span class="nav-text">5. 编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-安装php"><span class="nav-number">3.6.</span> <span class="nav-text">6. 安装php</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-测试安装是否成功"><span class="nav-number">3.7.</span> <span class="nav-text">7. 测试安装是否成功</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装mysql"><span class="nav-number">4.</span> <span class="nav-text">安装mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-配置yum源"><span class="nav-number">4.1.</span> <span class="nav-text">1. 配置yum源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用yum安装mysql源"><span class="nav-number">4.2.</span> <span class="nav-text">2. 使用yum安装mysql源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装mysql"><span class="nav-number">4.3.</span> <span class="nav-text">3. 安装mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-启动mysql"><span class="nav-number">4.4.</span> <span class="nav-text">4. 启动mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-开机启动"><span class="nav-number">4.5.</span> <span class="nav-text">5. 开机启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-修改root默认密码"><span class="nav-number">4.6.</span> <span class="nav-text">6. 修改root默认密码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#登录mysql，修改密码"><span class="nav-number">4.6.1.</span> <span class="nav-text">登录mysql，修改密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#密码策略"><span class="nav-number">4.6.2.</span> <span class="nav-text">密码策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改密码策略"><span class="nav-number">4.6.2.1.</span> <span class="nav-text">修改密码策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-添加远程登录用户"><span class="nav-number">4.7.</span> <span class="nav-text">7. 添加远程登录用户</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装apache"><span class="nav-number">5.</span> <span class="nav-text">安装apache</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-下载apche"><span class="nav-number">5.1.</span> <span class="nav-text">1. 下载apche</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-解压httpd-2-4-25-tar-gz压缩包"><span class="nav-number">5.2.</span> <span class="nav-text">2. 解压httpd-2.4.25.tar.gz压缩包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装依赖包pcre、apr、apr-util"><span class="nav-number">5.3.</span> <span class="nav-text">3. 安装依赖包pcre、apr、apr-util</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-安装apche"><span class="nav-number">5.4.</span> <span class="nav-text">4. 安装apche</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-启动apche"><span class="nav-number">5.5.</span> <span class="nav-text">5. 启动apche</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-开启防火墙"><span class="nav-number">5.6.</span> <span class="nav-text">6. 开启防火墙</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装nginx"><span class="nav-number">6.</span> <span class="nav-text">安装nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-下载nginx"><span class="nav-number">6.1.</span> <span class="nav-text">1. 下载nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-解压"><span class="nav-number">6.2.</span> <span class="nav-text">2. 解压</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-配置并安装"><span class="nav-number">6.3.</span> <span class="nav-text">4. 配置并安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-启动nginx"><span class="nav-number">6.4.</span> <span class="nav-text">5. 启动nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-配置nginx"><span class="nav-number">6.5.</span> <span class="nav-text">6. 配置nginx</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Openoter</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"openoter"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("4yBJ2Rhasby0Upv2IyRBIVoL-gzGzoHsz", "1PbbYpUV9yyYNVg3dxqKeACK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
